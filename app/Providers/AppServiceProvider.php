@@ -21,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with(compact('controller', 'action'));
         });
+
+        app('view')->composer('partials.tags', function($view) {
+            $view->with('tags', \App\Tag::orderBy('name', 'asc')->get());
+        });
     }
 
     /**

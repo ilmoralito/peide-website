@@ -81,39 +81,6 @@
                 </ul>
             </div>
 
-            <div class="box">
-                <p>Etiquetas</p>
-                <div class="field">
-                    <a href="#">
-                        <span class="tag is-primary">Tag name one</span>
-                    </a>
-                </div>
-                <div class="field">
-                    <a href="#">
-                        <span class="tag is-primary">Tag two</span>
-                    </a>
-                </div>
-                <div class="field">
-                    <a href="#">
-                        <span class="tag is-primary">Tag three</span>
-                    </a>
-                </div>
-                <div class="field">
-                    <a href="#">
-                        <span class="tag is-primary">Tag four</span>
-                    </a>
-                </div>
-                <div class="field">
-                    <a href="#">
-                        <span class="tag is-primary">Tag five</span>
-                    </a>
-                </div>
-                <div class="field">
-                    <a href="#">
-                        <span class="tag is-primary">Tag name six</span>
-                    </a>
-                </div>
-            </div>
-        </div>
+            @include('partials.tags')
     </div>
 @endsection
