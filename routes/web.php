@@ -13,4 +13,12 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin'], function() {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+
+    // TAGS
+    Route::get('tags', 'TagController@index')->name('tags');
+    Route::get('tags/create', 'TagController@create')->name('createTag');
+    Route::post('tags', 'TagController@store');
+    Route::get('tags/{tag}/edit', 'TagController@edit')->name('editTag');
+    Route::patch('tags/update', 'TagController@update');
+    Route::delete('tags/delete', 'TagController@destroy');
 });

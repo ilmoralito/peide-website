@@ -9,7 +9,9 @@
             <a href="#">Posts</a>
         </li>
         <li>
-            <a href="">Etiquetas</a>
+            <a href="/admin/tags" class="{{ $controller == 'TagController' ? 'is-active' : '' }}">
+                Etiquetas
+            </a>
         </li>
         <li>
             <a href="#">Proyectos</a>
