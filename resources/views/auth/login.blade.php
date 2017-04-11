@@ -1,4 +1,4 @@
-@extends('layouts.login')
+@extends('layouts.auth')
 
 @section('content')
     <form role="form" method="POST" action="{{ route('login') }}" autocomplete="off">

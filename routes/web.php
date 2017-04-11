@@ -9,7 +9,8 @@ Route::get('project', 'ProjectController@index')->name('project');
 Route::get('about', 'AboutController@index')->name('about');
 Route::post('about', 'AboutController@sendEmail');
 
-
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index');
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+});
