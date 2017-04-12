@@ -28,35 +28,22 @@
 @section('content')
     <div class="columns">
         <div class="column is-three-quarters">
-            <div class="box">
-                <p class="title">Blog post one title</p>
-                <p class="subtitle">By author name in 2017-02-03</p>
+            @if (count($posts))
+                @foreach ($posts as $post)
+                    <div class="box">
+                        <p class="title">{{ $post->title }}</p>
+                        <p class="subtitle">Por {{ $post->user->name }} en {{ $post->created_at }}</p>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, nisi dicta ullam enim illum quam tenetur natus asperiores cumque mollitia, deserunt optio odio voluptate magni beatae minima nesciunt numquam in.</p>
+                        <p class="field">{{ $post->body }}</p>
 
-                <br>
-                <a href="#" class="button is-small">Read more</a>
-            </div>
-
-            <div class="box">
-                <p class="title">Blog post two title</p>
-                <p class="subtitle">By author name in 2017-03-03</p>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, nisi dicta ullam enim illum quam tenetur natus asperiores cumque mollitia, deserunt optio odio voluptate magni beatae minima nesciunt numquam in.</p>
-
-                <br>
-                <a href="#" class="button is-small">Read more</a>
-            </div>
-
-            <div class="box">
-                <p class="title">Blog post three title</p>
-                <p class="subtitle">By author name in 2016-10-12</p>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, nisi dicta ullam enim illum quam tenetur natus asperiores cumque mollitia, deserunt optio odio voluptate magni beatae minima nesciunt numquam in.</p>
-
-                <br>
-                <a href="#" class="button is-small">Read more</a>
-            </div>
+                        <a href="#" class="button">Leer mas</a>
+                    </div>
+                @endforeach
+            @else
+                <div class="notification">
+                    Sin articulos que mostrar
+                </div>
+            @endif
         </div>
         <div class="column">
             <div class="box">
@@ -82,5 +69,6 @@
             </div>
 
             @include('partials.tags')
+        </div>
     </div>
 @endsection

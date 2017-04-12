@@ -14,7 +14,11 @@ class PostController extends Controller
 
     public function publications()
     {
-        return view('post.publications');
+        $posts = Post::where('is_published', true)
+            ->orderBy('created_at', 'asc')
+            ->get();
+
+        return view('post.publications', compact('posts'));
     }
 
     public function index()
