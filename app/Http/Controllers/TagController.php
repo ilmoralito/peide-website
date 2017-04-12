@@ -22,12 +22,8 @@ class TagController extends Controller
         return view('tags.create');
     }
 
-    public function store()
+    public function store(TagRequest $request)
     {
-        $this->validate(request(), [
-            'name' => 'required'
-        ]);
-
         $tag = new Tag;
 
         $tag->name = request('name');
@@ -42,12 +38,8 @@ class TagController extends Controller
         return view('tags/edit', [ 'tag' => $tag ]);
     }
 
-    public function update()
+    public function update(TagRequest $request)
     {
-        $this->validate(request(),
-            [ 'name' => 'required' ]
-        );
-
         $tag = Tag::find(request()->id);
 
         $tag->name = request('name');
