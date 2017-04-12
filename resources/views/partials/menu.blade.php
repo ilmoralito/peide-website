@@ -6,7 +6,9 @@
             <a href="#">Eventos</a>
         </li>
         <li>
-            <a href="#">Posts</a>
+            <a href="/admin/posts" class="{{ $controller == 'PostController' ? 'is-active' : '' }}">
+                Publicaciones
+            </a>
         </li>
         <li>
             <a href="/admin/tags" class="{{ $controller == 'TagController' ? 'is-active' : '' }}">

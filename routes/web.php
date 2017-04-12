@@ -2,7 +2,7 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('posts', 'PostController@index')->name('posts');
+Route::get('publications', 'PostController@publications')->name('publications');
 
 Route::get('project', 'ProjectController@index')->name('project');
 
@@ -13,6 +13,15 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin'], function() {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+
+    // POSTS
+    Route::get('posts', 'PostController@index')->name('posts');
+    Route::get('posts/create', 'PostController@create');
+    Route::post('posts/store', 'PostController@store');
+    Route::get('posts/show/{id}', 'PostController@show');
+    Route::get('posts/{id}/edit', 'PostController@edit');
+    Route::patch('posts/update', 'PostController@update')->name('editPost');
+    Route::delete('posts/delete', 'PostController@destroy');
 
     // TAGS
     Route::get('tags', 'TagController@index')->name('tags');

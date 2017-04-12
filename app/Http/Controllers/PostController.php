@@ -2,10 +2,86 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+use App\Http\Requests\PostRequest;
+
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', [ 'except' => 'publications' ]);
+    }
+
+    public function publications()
+    {
+        return view('post.publications');
+    }
+
     public function index()
     {
-        return view('post.index');
+        $posts = Post::where('user_id', '=', auth()->user()->id)->orderBy('created_at', 'asc')->get();
+
+        return view('post.index', compact('posts'));
+    }
+
+    public function create()
+    {
+        return view('post.create');
+    }
+
+    public function store(PostRequest $request)
+    {
+        $post = new Post;
+
+        $post->title = request('title');
+        $post->body = request('body');
+
+        auth()->user()->posts()->save($post);
+
+        foreach (request('tags') as $tag) {
+            $tagInstance = \App\Tag::find($tag);
+
+            $post->tags()->attach($tagInstance);
+        }
+
+        return redirect()->route('posts');
+    }
+
+    public function show($id)
+    {
+        $post = Post::with('tags')->where([
+            [ 'id', '=', $id ],
+            [ 'user_id', '=', auth()->user()->id ]
+        ])->first();
+
+        return view('post.show', compact('post'));
+    }
+
+    public function edit($id)
+    {
+        $post = Post::with('tags')->where([
+            [ 'id', '=', $id ],
+            [ 'user_id', '=', auth()->user()->id ]
+        ])->first();
+
+        return view('post.edit', compact('post'));
+    }
+
+    public function update()
+    {
+        
+    }
+
+    public function destroy()
+    {
+        $post = Post::where([
+            [ 'id', '=', request('id') ],
+            [ 'user_id', '=', auth()->user()->id ]
+        ])->first();
+
+        $post->delete();
+
+        session()->flash('message', 'La publicacion fue eliminada');
+        return redirect()->route('posts');
     }
 }
