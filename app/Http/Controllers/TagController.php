@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Tag;
+use App\Http\Requests\TagRequest;
 
 class TagController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         return view('tags.index', [ 'tags' => Tag::orderBy('name', 'asc')->get() ]);
