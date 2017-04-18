@@ -6,7 +6,7 @@
                 <p>PEIDE - Programa de Emprendedurismo, Innovación y Desarrollo Empresarial</p>
             </div>
             <div class="column is-one-quarter">
-                <p class="has-text-right">
+                <div class="block has-text-right">
                     <a href="#">
                         <i class="fa fa-facebook" aria-hidden="true"></i>
                     </a>
@@ -22,7 +22,7 @@
                     <a href="#">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
                     </a>
-                </p>
+                </div>
             </div>
         </div>
     </div>
