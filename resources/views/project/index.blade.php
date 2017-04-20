@@ -24,56 +24,22 @@
 @endsection
 
 @section('content')
-    <div class="section">
-        <p class="title">
-            <a href="#">Desarrollo de Idea - Empresa</a>
-        </p>
+    @if (count($projects))
+        @foreach ($projects as $project)
+            <div class="content">
+                <p class="title">{{ $project->name }}</p>
+                <p class="subtitle">{{ $project->description }}</p>
+                
+                <p>{{ str_limit($project->body, 100) }}</p>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis nemo distinctio harum quas asperiores inventore sequi nostrum, tempore, illum, cupiditate repellendus officiis aut minima esse cumque nesciunt nihil obcaecati nisi.</p>
-    </div>
-
-    <div class="section">
-        <p class="title">
-            <a href="#">Modulo Formador de Formadores</a>
-        </p>
-
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis nemo distinctio harum quas asperiores inventore sequi nostrum, tempore, illum, cupiditate repellendus officiis aut minima esse cumque nesciunt nihil obcaecati nisi.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis nemo distinctio harum quas asperiores inventore sequi nostrum, tempore, illum, cupiditate repellendus officiis aut minima esse cumque nesciunt nihil obcaecati nisi.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis nemo distinctio harum quas asperiores inventore sequi nostrum, tempore, illum, cupiditate repellendus officiis aut minima esse cumque nesciunt nihil obcaecati nisi.
-        </p>
-    </div>
-
-    <div class="section">
-        <p class="title">
-            <a href="#">Desarrollo de Idea - Empresa</a>
-        </p>
-
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis nemo distinctio harum quas asperiores inventore sequi nostrum, tempore, illum, cupiditate repellendus officiis aut minima esse cumque nesciunt nihil obcaecati nisi.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis nemo distinctio harum quas asperiores inventore sequi nostrum, tempore, illum, cupiditate repellendus officiis aut minima esse cumque nesciunt nihil obcaecati nisi.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis nemo distinctio harum quas asperiores inventore sequi nostrum, tempore, illum, cupiditate repellendus officiis aut minima esse cumque nesciunt nihil obcaecati nisi.
-        </p>
-    </div>
-
-    <div class="section">
-        <p class="title">
-            <a href="#">Mentoria a colegios</a>
-        </p>
-
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis nemo distinctio harum quas asperiores inventore sequi nostrum, tempore, illum, cupiditate repellendus officiis aut minima esse cumque nesciunt nihil obcaecati nisi.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis nemo distinctio harum quas asperiores inventore sequi nostrum, tempore, illum, cupiditate repellendus officiis aut minima esse cumque nesciunt nihil obcaecati nisi.
-        </p>
-    </div>
-
-    <div class="section">
-        <p class="title">
-            <a href="#">Acompañamiento docente</a>
-        </p>
-
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis nemo distinctio harum quas asperiores inventore sequi nostrum, tempore, illum, cupiditate repellendus officiis aut minima esse cumque nesciunt nihil obcaecati nisi.
-        </p>
-    </div>
+                <p class="field">
+                    <a href="projectList/display/{{ $project->id }}" class="button is-info">Saber mas</a>
+                </p>
+            </div>
+        @endforeach
+    @else
+        <article class="message">
+            <div class="message-body">Sin proyectos que mostrar</div>
+        </article>
+    @endif
 @endsection

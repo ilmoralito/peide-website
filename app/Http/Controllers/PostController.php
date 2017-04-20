@@ -9,7 +9,9 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', [ 'except' => 'publications' ]);
+        $this->middleware('auth', [
+            'except' => ['publications', 'publication']
+        ]);
     }
 
     public function publications()
@@ -19,6 +21,11 @@ class PostController extends Controller
             ->get();
 
         return view('post.publications', compact('posts'));
+    }
+
+    public function publication(Post $post)
+    {
+        return view('post.publication', compact('post'));
     }
 
     public function index()

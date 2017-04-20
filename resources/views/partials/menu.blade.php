@@ -16,7 +16,9 @@
             </a>
         </li>
         <li>
-            <a href="#">Proyectos</a>
+            <a href="/admin/projects" class="{{ $controller == 'ProjectController' ? 'is-active' : '' }}">
+                Proyectos
+            </a>
         </li>
         <li>
             <a href="#">Alianzas</a>

@@ -36,7 +36,7 @@
 
                         <p class="field">{{ $post->body }}</p>
 
-                        <a href="#" class="button">Leer mas</a>
+                        <a href="/publication/ {{ $post->id }}" class="button">Leer mas</a>
                     </div>
                 @endforeach
             @else
