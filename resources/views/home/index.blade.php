@@ -7,99 +7,40 @@
 
 @section('content')
     <div class="carousel">
-        <div class="section hero is-primary is-bold is-medium">
-            <div class="container">
-                <div class="heading">
-                    <p class="title">Project name</p>
-                    <p class="subtitle">Project description</p>
+        @foreach ($projects as $project)
+            <div class="section hero {{ $heros[array_rand($heros, 1)] }} is-bold is-medium">
+                <div class="container">
+                    <div class="heading">
+                        <p class="title">{{ $project->name }}</p>
+                        <p class="subtitle">{{ str_limit($project->description, 30) }}</p>
+                    </div>
+
+                    <p class="field">{{ str_limit($project->body, 50) }}</p>
+                    <p class="field">
+                        <a href="projectList/display/{{ $project->id }}" class="button is-info">Saber mas</a>
+                    </p>
                 </div>
-
-                <p class="field">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                <p class="field">
-                    <a href="#" class="button is-info">Saber mas</a>
-                </p>
             </div>
-        </div>
-
-        <div class="section hero is-info is-medium">
-            <div class="container">
-                <div class="heading">
-                    <p class="title">Project name</p>
-                    <p class="subtitle">Project description</p>
-                </div>
-
-                <p class="field">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                <p class="field">
-                    <a href="#" class="button is-success">Saber mas</a>
-                </p>
-            </div>
-        </div>
-
-        <div class="section hero is-success is-medium">
-            <div class="container">
-                <div class="heading">
-                    <p class="title">Project name</p>
-                    <p class="subtitle">Project description</p>
-                </div>
-
-                <p class="field">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                <p class="field">
-                    <a href="#" class="button is-danger">Saber mas</a>
-                </p>
-            </div>
-        </div>
-
-        <div class="section is-medium">
-            <div class="container">
-                <div class="heading">
-                    <p class="title">Project name</p>
-                    <p class="subtitle">Project description</p>
-                </div>
-
-                <p class="field">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                <p class="field">
-                    <a href="#" class="button is-sucess">Saber mas</a>
-                </p>
-            </div>
-        </div>
-
-        <div class="section hero is-dark is-medium">
-            <div class="container">
-                <div class="heading">
-                    <p class="title">Project name</p>
-                    <p class="subtitle">Project description</p>
-                </div>
-
-                <p class="field">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                <p class="field">
-                    <a href="#" class="button is-warning">Saber mas</a>
-                </p>
-            </div>
-        </div>
+        @endforeach
     </div>
 
     <div class="section">
-        <div class="columns">
-            <div class="column">
-                <p class="subtitle">Suscribete a la lista de noticias</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam ipsa voluptates vero, quos odit ipsam quidem error unde doloremque sapiente dicta id tempore laborum cum reprehenderit, libero aspernatur aliquam perferendis.</p>
-            </div>
-            <div class="column">
-                <form action="" method="POST">
-                    <div class="field">
-                        <label for="email">Email</label>
+        <p class="title">Suscribete a la lista de noticias</p>
+        <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam ipsa voluptates vero, quos odit ipsam quidem error unde doloremque sapiente dicta id tempore laborum cum reprehenderit, libero aspernatur aliquam perferendis.</p>
 
-                        <div class="control">
-                            <input type="email" name="email" id="email" class="input">
-                        </div>
-                    </div>
+        <form action="" method="POST">
+            <div class="field">
+                <label for="email">Email</label>
 
-                    <div class="field">
-                        <button type="submit" class="button">Suscribeme</button>
-                    </div>
-                </form>
+                <div class="control">
+                    <input type="email" name="email" id="email" class="input">
+                </div>
             </div>
-        </div>
+
+            <div class="field">
+                <button type="submit" class="button">Suscribeme</button>
+            </div>
+        </form>
     </div>
 @endsection
 
