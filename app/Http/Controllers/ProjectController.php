@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use App\ProjectFaq;
+use App\ProjectPhoto;
 use App\Http\Requests\ProjectRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ProjectFaqRequest;
+use App\Http\Requests\ProjectPhotoRequest;
 
 class ProjectController extends Controller
 {
@@ -153,5 +156,34 @@ class ProjectController extends Controller
             'project' => $project->id,
             'faq' => $faq->id
         ]);
+    }
+
+    public function photos(Project $project)
+    {
+        $photos = $project->projectPhotos()->latest()->get();
+
+        return view('project.photos', compact('project', 'photos'));
+    }
+
+    public function storePhoto(ProjectPhotoRequest $projectPhotoRequest, Project $project)
+    {
+        $photo = request()->file('url')->store('projects/' . $project->id);
+        $url = Storage::disk('s3')->url($photo);
+
+        $projectPhoto = new ProjectPhoto;
+        $projectPhoto->url = $url;
+        $project->projectPhotos()->save($projectPhoto);
+
+        return back();
+    }
+
+    public function destroyPhoto(Project $project)
+    {
+        $photo = ProjectPhoto::findOrFail(request('id'));
+
+        Storage::delete($photo->url);
+        $photo->delete();
+
+        return back();
     }
 }

@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
 
         factory(App\Project::class, 10)->create()->each(function ($project) {
             $project->projectFaqs()->saveMany(factory(App\ProjectFaq::class, 5)->make());
+            $project->projectPhotos()->saveMany(factory(App\ProjectPhoto::class, 5)->make());
         });
     }
 }

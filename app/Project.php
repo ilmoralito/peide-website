@@ -10,4 +10,9 @@ class Project extends Model
     {
         return $this->hasMany(ProjectFaq::class);
     }
+
+    public function projectPhotos()
+    {
+        return $this->hasMany(ProjectPhoto::class);
+    }
 }

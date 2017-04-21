@@ -39,3 +39,9 @@ $factory->define(App\ProjectFaq::class, function(Faker\Generator $faker) {
         'answer' => $faker->paragraph
     ];
 });
+
+$factory->define(App\ProjectPhoto::class, function(Faker\Generator $faker) {
+    return [
+        'url' => $faker->unique()->imageUrl
+    ];
+});

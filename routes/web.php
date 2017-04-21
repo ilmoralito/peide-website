@@ -24,6 +24,8 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('projects/{project}/edit', 'ProjectController@edit');
     Route::patch('projects/update', 'ProjectController@update');
     Route::delete('projects/delete', 'ProjectController@destroy');
+
+    // PROJECTS FAQS
     Route::get('projects/{project}/faqs', 'ProjectController@faqs')->name('faqs');
     Route::get('projects/{project}/faqs/create', 'ProjectController@createFaq')->name('createFaq');
     Route::post('projects/{project}/faqs/store', 'ProjectController@storeFaq');
@@ -31,6 +33,11 @@ Route::group(['prefix' => 'admin'], function() {
     Route::delete('projects/{project}/faqs/delete', 'ProjectController@destroyFaq');
     Route::get('projects/{project}/faqs/{faq}/edit', 'ProjectController@editFaq');
     Route::patch('projects/{project}/faqs/update', 'ProjectController@updateFaq');
+
+    // PROJECTS PHOTOS
+    Route::get('projects/{project}/photos', 'ProjectController@photos')->name('photos');
+    Route::post('projects/{project}/photos/store', 'ProjectController@storePhoto');
+    Route::delete('projects/{project}/photos/delete', 'ProjectController@destroyPhoto');
 
     // POSTS
     Route::get('posts', 'PostController@index')->name('posts');
