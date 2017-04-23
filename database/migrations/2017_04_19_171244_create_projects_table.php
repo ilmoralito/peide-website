@@ -19,6 +19,7 @@ class CreateProjectsTable extends Migration
             $table->string('name')->unique();
             $table->text('description');
             $table->text('body');
+            $table->boolean('is_published')->default(false);
             $table->string('url')->nullable()->unique();
 
             $table->timestamps();

@@ -77,6 +77,7 @@ class ProjectController extends Controller
         $project->description = request('description');
         $project->url = request('url');
         $project->body = request('body');
+        $project->is_published = request()->has('is_published');
 
         $project->save();
 

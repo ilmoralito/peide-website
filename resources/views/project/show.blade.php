@@ -18,6 +18,16 @@
                 <td>{{ $project->name }}</td>
             </tr>
             <tr>
+                <td>Estado</td>
+                <td>
+                    @if ($project->is_published)
+                        Publicado
+                    @else
+                        Sin publicar
+                    @endif
+                </td>
+            </tr>
+            <tr>
                 <td>Fecha de creacion</td>
                 <td>{{ $project->created_at->diffForHumans() }}</td>
             </tr>

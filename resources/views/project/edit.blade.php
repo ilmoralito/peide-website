@@ -40,6 +40,15 @@
             </p>
         </div>
 
+        <div class="field">
+            <p class="control">
+                <label for="is_published" class="checkbox">
+                    <input type="checkbox" name="is_published" id="is_published" {{ $project->is_published ? 'checked' : '' }}>
+                    Publicado
+                </label>
+            </p>
+        </div>
+
         <p class="field">
             <button type="submit" class="button is-primary">Actualizar</button>
         </p>
