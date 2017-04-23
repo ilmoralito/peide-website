@@ -28,7 +28,9 @@
     <p class="menu-label">Administracion</p>
 
     <ul class="menu-list">
-        <li><a href="#">Perfil</a></li>
+        <li>
+            <a href="/admin/user/edit" class="{{ $controller == 'UserController' ? 'is-active' : '' }}">Perfil</a>
+        </li>
         <li>
             <form action="/logout" method="POST">
                 {{ csrf_field() }}

@@ -55,4 +55,12 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('tags/{tag}/edit', 'TagController@edit')->name('editTag');
     Route::patch('tags/update', 'TagController@update');
     Route::delete('tags/delete', 'TagController@destroy');
+
+    // USER
+    Route::get('user/edit', 'UserController@edit');
+    Route::patch('user/update', 'UserController@update');
+    Route::get('user/password', 'UserController@password');
+    Route::patch('user/password/update', 'UserController@updatePassword');
+    Route::get('user/avatar', 'UserController@avatar');
+    Route::post('user/avatar/store', 'UserController@storeAvatar');
 });
