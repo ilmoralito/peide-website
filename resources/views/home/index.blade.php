@@ -17,11 +17,148 @@
 
                     <p class="field">{{ str_limit($project->body, 50) }}</p>
                     <p class="field">
-                        <a href="projectList/display/{{ $project->id }}" class="button is-info">Saber mas</a>
+                        <a href="projects/{{ $project->slug }}" class="button is-info">Saber mas</a>
                     </p>
                 </div>
             </div>
         @endforeach
+    </div>
+
+    <div class="section">
+        <div class="columns">
+            <div class="column is-3">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img src="https://s3-us-west-2.amazonaws.com/uccleon.peide.website/photos/chocolate-2224998_640.jpg" alt="Image One">
+                        </figure>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="content">
+                            <p>FREE</p>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <a href="#" class="card-footer-item">Saber mas</a>
+                        <a href="#" class="card-footer-item">Compartir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column is-9">
+                <p>LUNES, 26 NOVIEMBRE 8:00 PM</p>
+
+                <p class="subtitle">Instrumentos musicales</p>
+
+                <p>
+                    <span class="icon is-small">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    </span>
+                    <small>Universidad de Ciencias Comerciales, Leon Nicaragua, Frente al campus medico</small>
+                </p>
+
+                <p>
+                    <span class="icon is-small">
+                        <i class="fa fa-tag" aria-hidden="true"></i>
+                    </span>
+                    <a href="#"><small>Foot</small></a>
+                    <a href="#"><small>Culture</small></a>
+                    <a href="#"><small>Leon</small></a>
+                </p>
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column is-3">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img src="https://s3-us-west-2.amazonaws.com/uccleon.peide.website/photos/paper-182220_640.jpg" alt="Image One">
+                        </figure>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="content">
+                            <p>FREE</p>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <a href="#" class="card-footer-item">Saber mas</a>
+                        <a href="#" class="card-footer-item">Compartir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column is-9">
+                <p>LUNES, 26 NOVIEMBRE 8:00 PM</p>
+
+                <p class="subtitle">Instrumentos musicales</p>
+
+                <p>
+                    <span class="icon is-small">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    </span>
+                    <small>Universidad de Ciencias Comerciales, Leon Nicaragua, Frente al campus medico</small>
+                </p>
+
+                <p>
+                    <span class="icon is-small">
+                        <i class="fa fa-tag" aria-hidden="true"></i>
+                    </span>
+                    <a href="#"><small>Foot</small></a>
+                    <a href="#"><small>Culture</small></a>
+                    <a href="#"><small>Leon</small></a>
+                </p>
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="column is-3">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img src="https://s3-us-west-2.amazonaws.com/uccleon.peide.website/photos/paper-182218_640.jpg" alt="Image One">
+                        </figure>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="content">
+                            <p>FREE</p>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <a href="#" class="card-footer-item">Saber mas</a>
+                        <a href="#" class="card-footer-item">Compartir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column is-9">
+                <p>LUNES, 26 NOVIEMBRE 8:00 PM</p>
+
+                <p class="subtitle">Instrumentos musicales</p>
+
+                <p>
+                    <span class="icon is-small">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    </span>
+                    <small>Universidad de Ciencias Comerciales, Leon Nicaragua, Frente al campus medico</small>
+                </p>
+
+                <p>
+                    <span class="icon is-small">
+                        <i class="fa fa-tag" aria-hidden="true"></i>
+                    </span>
+                    <a href="#"><small>Foot</small></a>
+                    <a href="#"><small>Culture</small></a>
+                    <a href="#"><small>Leon</small></a>
+                </p>
+            </div>
+        </div>
     </div>
 
     <div class="section">

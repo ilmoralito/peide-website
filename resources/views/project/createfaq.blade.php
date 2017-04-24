@@ -3,9 +3,9 @@
 @section('title', 'Crear FAQ')
 
 @section('content')
-    <div class="is-clearfix">
-        <a href="/admin/projects/{{ $project->id }}/faqs" class="button is-primary is-pulled-right">Regresar a lista</a>
-    </div>
+    @include('partials.projects.bar')
+
+    @include('partials.projects.tab')
 
     <form action="/admin/projects/{{ $project->id }}/faqs/store" method="POST" autocomplete="off">
         {{ csrf_field() }}

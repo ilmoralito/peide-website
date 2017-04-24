@@ -18,13 +18,19 @@
                 <td>{{ $project->name }}</td>
             </tr>
             <tr>
+                <td>Ficha</td>
+                <td>{{ $project->slug }}</td>
+            </tr>
+            <tr>
                 <td>Estado</td>
                 <td>
-                    @if ($project->is_published)
-                        Publicado
-                    @else
-                        Sin publicar
-                    @endif
+                    <strong>
+                        @if ($project->is_published)
+                            Publicado
+                        @else
+                            Sin publicar
+                        @endif
+                    </strong>
                 </td>
             </tr>
             <tr>

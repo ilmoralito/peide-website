@@ -20,7 +20,9 @@ class CreateProjectsTable extends Migration
             $table->text('description');
             $table->text('body');
             $table->boolean('is_published')->default(false);
+            $table->integer('user_id');
             $table->string('url')->nullable()->unique();
+            $table->string('slug')->unique();
 
             $table->timestamps();
         });

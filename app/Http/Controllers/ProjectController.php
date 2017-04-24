@@ -22,12 +22,14 @@ class ProjectController extends Controller
     public function index()
     {
         return view('project.index', [
-            'projects' => Project::orderBy('created_at', 'desc')->get()
+            'projects' => Project::where('is_published', true)->orderBy('created_at', 'desc')->get()
         ]);
     }
 
-    public function display(Project $project)
+    public function display($slug)
     {
+        $project = Project::where('slug', $slug)->first();
+
         return view('project.display', compact('project'));
     }
 
@@ -51,8 +53,9 @@ class ProjectController extends Controller
         $project->url = request('url');
         $project->body = request('body');
         $project->description = request('description');
+        $project->slug = str_slug(request('name'));
 
-        $project->save();
+        auth()->user()->projects()->save($project);
 
         session()->flash('message', 'Proyecto creado exitosamente');
 
@@ -78,6 +81,7 @@ class ProjectController extends Controller
         $project->url = request('url');
         $project->body = request('body');
         $project->is_published = request()->has('is_published');
+        $project->slug = str_slug(request('name'));
 
         $project->save();
 

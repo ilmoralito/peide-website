@@ -1,19 +1,21 @@
 @extends('layouts.backend')
 
-@section('title', 'FAQ\'S')
+@section('title', 'Preguntas comunes')
 
 @section('content')
+    @include('partials.projects.bar')
+
+    @include('partials.projects.tab')
+
     <div class="is-clearfix">
         <a href="/admin/projects/{{ $project->id }}/faqs/create" class="button is-primary is-pulled-right">Crear FAQ</a>
     </div>
 
     @if (count($projectFaqs))
         <table class="table">
-            <caption>FAQS de {{ $project->name }}</caption>
-
             <colgroup>
-                <col span="1" style="width: 20%;">
-                <col span="1" style="width: 75%;">
+                <col span="1" style="width: 40%;">
+                <col span="1" style="width: 55%;">
                 <col span="1" style="width: 5%;">
             </colgroup>
 
@@ -29,7 +31,7 @@
                 @foreach ($projectFaqs as $faq)
                     <tr>
                         <td>{{ $faq->question }}</td>
-                        <td>{{ $faq->answer }}</td>
+                        <td>{{ str_limit($faq->answer, 25) }}</td>
                         <td>
                             <a href="/admin/projects/{{ $project->id }}/faqs/show/{{ $faq->id }}">Mostrar</a>
                         </td>

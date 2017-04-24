@@ -10,14 +10,12 @@
     @if (count($projects))
         <table class="table">
             <colgroup>
-                <col span="1" style="width: 75%;">
-                <col span="1" style="width: 20%;">
-                <col span="1" style="width: 5%;">
+                <col span="1" style="width: 90%;">
+                <col span="1" style="width: 10%;">
             </colgroup>
             <thead>
                 <tr>
                     <th>Nombre del proyecto</th>
-                    <td></td>
                     <th></th>
                 </tr>
             </thead>
@@ -26,20 +24,16 @@
                     <tr>
                         <td>{{ $project->name }}</td>
                         <td>
-                            <a href="projects/{{ $project->id }}/faqs">
-                                Administrar FAQ'S
-                            </a>
-                        </td>
-                        <td>
-                            <a href="projects/show/{{ $project->id }}">Mostrar</a>
+                            <a href="projects/show/{{ $project->id }}">Administrar</a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     @else
+        <br>
         <div class="message">
-            Sin proyectos que mostrar
+            <div class="message-body">Sin proyectos que mostrar</div>
         </div>
     @endif
 @endsection

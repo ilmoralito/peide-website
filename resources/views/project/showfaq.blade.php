@@ -3,10 +3,14 @@
 @section('title', 'Crear proyecto')
 
 @section('content')
+    @include('partials.projects.bar')
+
+    @include('partials.projects.tab')
+
     <div class="is-clearfix">
         <div class="block is-pulled-right">
-            <a href="/admin/projects/{{ $project->id }}/faqs" class="button is-primary">Regresar</a>
             <a href="/admin/projects/{{ $project->id }}/faqs/{{ $faq->id }}/edit" class="button">Editar</a>
+
             <form action="/admin/projects/{{ $project->id }}/faqs/delete" method="POST" class="is-pulled-right" style="margin-left: 5px;">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}

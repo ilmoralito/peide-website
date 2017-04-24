@@ -6,7 +6,7 @@ Route::get('publications', 'PostController@publications')->name('publications');
 Route::get('publication/{id}', 'PostController@publication');
 
 Route::get('projectList', 'ProjectController@index')->name('projectList');
-Route::get('projectList/display/{project}', 'ProjectController@display');
+Route::get('projects/{slug}', 'ProjectController@display');
 
 Route::get('about', 'AboutController@index')->name('about');
 Route::post('about', 'AboutController@sendEmail');

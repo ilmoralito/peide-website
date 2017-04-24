@@ -33,7 +33,7 @@
                 <p>{{ str_limit($project->body, 100) }}</p>
 
                 <p class="field">
-                    <a href="projectList/display/{{ $project->id }}" class="button is-info">Saber mas</a>
+                    <a href="projects/{{ $project->slug }}" class="button is-info">Saber mas</a>
                 </p>
             </div>
         @endforeach

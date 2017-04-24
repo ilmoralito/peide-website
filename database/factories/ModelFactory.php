@@ -29,7 +29,8 @@ $factory->define(App\Project::class, function(Faker\Generator $faker) {
         'name' => $faker->unique()->sentence,
         'description' => $faker->paragraph,
         'body' => $faker->realText,
-        'url' => $faker->unique()->url
+        'url' => $faker->unique()->url,
+        'slug' => $faker->slug
     ];
 });
 
