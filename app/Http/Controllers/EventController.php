@@ -7,6 +7,7 @@ use App\Schedule;
 use App\EventFaq;
 use App\Http\Requests\EventRequest;
 use App\Http\Requests\EventFaqRequest;
+use App\Http\Requests\ScheduleRequest;
 use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
@@ -144,5 +145,22 @@ class EventController extends Controller
         return redirect()->route('eventFaqs', [
             'event' => $event
         ]);
+    }
+
+    public function schedules(Event $event)
+    {
+        $schedules = $event->schedules()->orderBy('created_at', 'desc')->get();
+
+        return view('event.schedules', compact('event', 'schedules'));
+    }
+
+    public function createSchedule(Event $event)
+    {
+        return view('event.createschedule', compact('event'));
+    }
+
+    public function storeSchedule(Event $event, ScheduleRequest $scheduleRequest)
+    {
+
     }
 }

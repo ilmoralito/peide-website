@@ -8,7 +8,7 @@ class Event extends Model
 {
     public function schedules()
     {
-        return $this->hasMany(Shcedule::class);
+        return $this->hasMany(Schedule::class);
     }
 
     public function faqs()

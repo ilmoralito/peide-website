@@ -57,6 +57,11 @@ Route::group(['prefix' => 'admin'], function() {
     Route::patch('events/{event}/faqs/update', 'EventController@updateFaq');
     Route::delete('events/{event}/faqs/delete', 'EventController@destroyFaq');
 
+    // EVENTS SCHEDULES
+    Route::get('events/{event}/schedules', 'EventController@schedules')->name('schedules');
+    Route::get('events/{event}/schedules/create', 'EventController@createSchedule');
+    Route::post('events/{event}/schedules/store', 'EventController@storeSchedule');
+
     // POSTS
     Route::get('posts', 'PostController@index')->name('posts');
     Route::get('posts/create', 'PostController@create');
