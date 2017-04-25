@@ -39,6 +39,24 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('projects/{project}/photos/store', 'ProjectController@storePhoto');
     Route::delete('projects/{project}/photos/delete', 'ProjectController@destroyPhoto');
 
+    // EVENTS
+    Route::get('events', 'EventController@index')->name('events');
+    Route::get('events/create', 'EventController@create');
+    Route::post('events/store', 'EventController@store');
+    Route::get('events/show/{event}', 'EventController@show');
+    Route::get('events/{event}/edit', 'EventController@edit');
+    Route::patch('events/update', 'EventController@update');
+    Route::delete('events/delete', 'EventController@destroy');
+
+    // EVENTS FAQS
+    Route::get('events/{event}/faqs', 'EventController@faqs')->name('eventFaqs');
+    Route::get('events/{event}/faqs/create', 'EventController@createFaq');
+    Route::post('events/{event}/faqs/store', 'EventController@storeFaq');
+    Route::get('events/{event}/faqs/show/{faq}', 'EventController@showFaq');
+    Route::get('events/{event}/faqs/{faq}/edit', 'EventController@editFaq');
+    Route::patch('events/{event}/faqs/update', 'EventController@updateFaq');
+    Route::delete('events/{event}/faqs/delete', 'EventController@destroyFaq');
+
     // POSTS
     Route::get('posts', 'PostController@index')->name('posts');
     Route::get('posts/create', 'PostController@create');

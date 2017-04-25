@@ -26,7 +26,7 @@
                         <tr>
                             <td>{{ $tag->name }}</td>
                             <td>
-                                <a href="tags/{{ $tag->id }}/edit" class="button is-small is-pulled-right">
+                                <a href="tags/{{ $tag->id }}/edit" class="button is-link is-small">
                                     Editar
                                 </a>
                             </td>
@@ -36,7 +36,7 @@
                                     {{ method_field('DELETE') }}
                                     <input type="hidden" name="id" value="{{ $tag->id }}">
 
-                                    <button type="submit" class="button is-small is-danger">Eliminar</button>
+                                    <button type="submit" class="button is-link is-small">Eliminar</button>
                                 </form>
                             </td>
                         </tr>

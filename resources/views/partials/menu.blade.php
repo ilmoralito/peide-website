@@ -3,7 +3,7 @@
 
     <ul class="menu-list">
         <li>
-            <a href="#">Eventos</a>
+            <a href="/admin/events" class="{{ $controller == 'EventController' ? 'is-active' : '' }}">Eventos</a>
         </li>
         <li>
             <a href="/admin/posts" class="{{ $controller == 'PostController' ? 'is-active' : '' }}">

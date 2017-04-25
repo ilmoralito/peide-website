@@ -46,3 +46,31 @@ $factory->define(App\ProjectPhoto::class, function(Faker\Generator $faker) {
         'url' => $faker->unique()->imageUrl
     ];
 });
+
+$factory->define(App\Event::class, function(Faker\Generator $faker) {
+    return [
+        'name' => $faker->sentence,
+        'description' => $faker->paragraph,
+        'image' => $faker->imageUrl,
+        'price' => $faker->randomFloat,
+        'address' => $faker->streetAddress,
+        'latitude' => $faker->latitude,
+        'longitude' => $faker->longitude
+    ];
+});
+
+$factory->define(App\EventFaq::class, function(Faker\Generator $faker) {
+    return [
+        'question' => $faker->unique()->sentence . '?',
+        'answer' => $faker->unique()->sentence
+    ];
+});
+
+$factory->define(App\Shedule::class, function(Faker\Generator $faker) {
+    return [
+        'location' => $faker->streetAddress,
+        'date' => $faker->date,
+        'start_time' => $faker->time,
+        'end_time' => $faker->time
+    ];
+});

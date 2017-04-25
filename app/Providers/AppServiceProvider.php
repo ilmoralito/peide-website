@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        app('view')->composer(['partials.nav', 'partials.menu', 'partials.projects.tab', 'user.tab'], function($view) {
+        app('view')->composer(['partials.nav', 'partials.menu', 'partials.projects.tab', 'user.tab', 'event.tab'], function($view) {
             $action = app('request')->route()->getAction();
             $controller = class_basename($action['controller']);
 

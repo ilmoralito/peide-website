@@ -1,4 +1,4 @@
-<div class="tabs is-centered is-boxed">
+<div class="tabs is-boxed">
     <ul>
         <li class="{{ $action == 'edit' ? 'is-active' : '' }}">
             <a href="/admin/user/edit">Perfil</a>
