@@ -16,7 +16,7 @@ class CreateEventFaqsTable extends Migration
         Schema::create('event_faqs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('question');
-            $table->string('answer');
+            $table->text('answer');
             $table->integer('event_id');
             $table->timestamps();
         });

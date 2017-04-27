@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('events/{slug}', 'EventController@display');
 
 Route::get('publications', 'PostController@publications')->name('publications');
 Route::get('publication/{id}', 'PostController@publication');
@@ -48,7 +49,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::patch('events/update', 'EventController@update');
     Route::delete('events/delete', 'EventController@destroy');
 
-    // EVENTS FAQS
+    // EVENT FAQS
     Route::get('events/{event}/faqs', 'EventController@faqs')->name('eventFaqs');
     Route::get('events/{event}/faqs/create', 'EventController@createFaq');
     Route::post('events/{event}/faqs/store', 'EventController@storeFaq');
@@ -57,7 +58,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::patch('events/{event}/faqs/update', 'EventController@updateFaq');
     Route::delete('events/{event}/faqs/delete', 'EventController@destroyFaq');
 
-    // EVENTS SCHEDULES
+    // EVENT SCHEDULES
     Route::get('events/{event}/schedules', 'EventController@schedules')->name('schedules');
     Route::get('events/{event}/schedules/create', 'EventController@createSchedule');
     Route::post('events/{event}/schedules/store', 'EventController@storeSchedule');

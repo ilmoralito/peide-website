@@ -22,7 +22,7 @@
             <label for="answer">Respuesta</label>
 
             <p class="control">
-                <input type="text" name="answer" id="answer" value="{{ old('answer') }}" class="input">
+                <textarea name="answer" id="answer" class="textarea">{{ old('answer') }}</textarea>
             </p>
         </div>
 

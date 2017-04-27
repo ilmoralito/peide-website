@@ -2,6 +2,23 @@
 
 @section('title', 'Crear evento')
 
+@section('scripts')
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=re4dqw1n8jvmxbnfkhnlenfy33tj698557o2rgo76ux3t896"></script>
+    <script>
+        tinymce.init({
+            selector:'textarea',
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+            ],
+            height: 500,
+            toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
+        });
+    </script>
+@endsection
+
 @section('content')
     <form action="/admin/events/store" method="POST" autocomplete="off" enctype="multipart/form-data">
         {{ csrf_field() }}

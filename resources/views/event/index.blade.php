@@ -28,7 +28,9 @@
             </tbody>
         </table>
     @else
-        <a href="/admin/events/create" class="button is-primary">Crear evento</a>
+        <div class="is-clearfix">
+            <a href="/admin/events/create" class="button is-primary is-pulled-right">Crear evento</a>
+        </div>
     @endif
 
     @include('partials.message')

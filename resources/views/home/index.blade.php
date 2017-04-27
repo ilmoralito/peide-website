@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <div class="carousel">
+    <div class=" carousel">
         @foreach ($projects as $project)
             <div class="section hero {{ $heros[array_rand($heros, 1)] }} is-bold is-medium">
                 <div class="container">
@@ -24,161 +24,68 @@
         @endforeach
     </div>
 
-    <div class="section">
-        <div class="columns">
-            <div class="column is-3">
-                <div class="card">
-                    <div class="card-image">
-                        <figure class="image">
-                            <img src="https://s3-us-west-2.amazonaws.com/uccleon.peide.website/photos/chocolate-2224998_640.jpg" alt="Image One">
-                        </figure>
-                    </div>
+    @if (count($events))
+        <br>
 
-                    <div class="card-content">
-                        <div class="content">
-                            <p>FREE</p>
-                        </div>
-                    </div>
+        <table class="table">
+            <caption>EVENTOS</caption>
 
-                    <div class="card-footer">
-                        <a href="#" class="card-footer-item">Saber mas</a>
-                        <a href="#" class="card-footer-item">Compartir</a>
-                    </div>
-                </div>
-            </div>
+            <colgroup>
+                <col span="1" style="width: 40%;">
+                <col span="1" style="width: 60%;">
+            </colgroup>
 
-            <div class="column is-9">
-                <p>LUNES, 26 NOVIEMBRE 8:00 PM</p>
+            <tbody>
+                @foreach ($events as $event)
+                    <tr>
+                        <td>
+                            <div class="card">
+                                <div class="card-image">
+                                    <figure class="image">
+                                        <img src="{{ $event->image }}" alt="{{ $event->name }}">
+                                    </figure>
+                                </div>
 
-                <p class="subtitle">Instrumentos musicales</p>
+                                <div class="card-content">
+                                    <div class="content">
+                                        <p>{{ $event->price > 0.00 ? $event->price : 'GRATIS' }}</p>
+                                    </div>
+                                </div>
 
-                <p>
-                    <span class="icon is-small">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    </span>
-                    <small>Universidad de Ciencias Comerciales, Leon Nicaragua, Frente al campus medico</small>
-                </p>
+                                <div class="card-footer">
+                                    <a href="/events/{{ $event->slug }}" class="card-footer-item">Saber mas</a>
+                                </div>
+                            </div>
+                        </td>
 
-                <p>
-                    <span class="icon is-small">
-                        <i class="fa fa-tag" aria-hidden="true"></i>
-                    </span>
-                    <a href="#"><small>Foot</small></a>
-                    <a href="#"><small>Culture</small></a>
-                    <a href="#"><small>Leon</small></a>
-                </p>
-            </div>
-        </div>
+                        <td>
+                            <p class="subtitle">{{ $event->name }}</p>
 
-        <div class="columns">
-            <div class="column is-3">
-                <div class="card">
-                    <div class="card-image">
-                        <figure class="image">
-                            <img src="https://s3-us-west-2.amazonaws.com/uccleon.peide.website/photos/paper-182220_640.jpg" alt="Image One">
-                        </figure>
-                    </div>
+                            <p>
+                                <span class="icon">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                </span>
+                                {{ $event->address }}
+                            </p>
 
-                    <div class="card-content">
-                        <div class="content">
-                            <p>FREE</p>
-                        </div>
-                    </div>
-
-                    <div class="card-footer">
-                        <a href="#" class="card-footer-item">Saber mas</a>
-                        <a href="#" class="card-footer-item">Compartir</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="column is-9">
-                <p>LUNES, 26 NOVIEMBRE 8:00 PM</p>
-
-                <p class="subtitle">Instrumentos musicales</p>
-
-                <p>
-                    <span class="icon is-small">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    </span>
-                    <small>Universidad de Ciencias Comerciales, Leon Nicaragua, Frente al campus medico</small>
-                </p>
-
-                <p>
-                    <span class="icon is-small">
-                        <i class="fa fa-tag" aria-hidden="true"></i>
-                    </span>
-                    <a href="#"><small>Foot</small></a>
-                    <a href="#"><small>Culture</small></a>
-                    <a href="#"><small>Leon</small></a>
-                </p>
+                            <p>
+                                <span class="icon">
+                                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                                </span>
+                                {{ $event->schedules[0]->start_date }}
+                            </p>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <div class="message">
+            <div class="message-body">
+                No hay eventos proximos, puedes visitar <a href="#">archivos</a>
             </div>
         </div>
-
-        <div class="columns">
-            <div class="column is-3">
-                <div class="card">
-                    <div class="card-image">
-                        <figure class="image">
-                            <img src="https://s3-us-west-2.amazonaws.com/uccleon.peide.website/photos/paper-182218_640.jpg" alt="Image One">
-                        </figure>
-                    </div>
-
-                    <div class="card-content">
-                        <div class="content">
-                            <p>FREE</p>
-                        </div>
-                    </div>
-
-                    <div class="card-footer">
-                        <a href="#" class="card-footer-item">Saber mas</a>
-                        <a href="#" class="card-footer-item">Compartir</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="column is-9">
-                <p>LUNES, 26 NOVIEMBRE 8:00 PM</p>
-
-                <p class="subtitle">Instrumentos musicales</p>
-
-                <p>
-                    <span class="icon is-small">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    </span>
-                    <small>Universidad de Ciencias Comerciales, Leon Nicaragua, Frente al campus medico</small>
-                </p>
-
-                <p>
-                    <span class="icon is-small">
-                        <i class="fa fa-tag" aria-hidden="true"></i>
-                    </span>
-                    <a href="#"><small>Foot</small></a>
-                    <a href="#"><small>Culture</small></a>
-                    <a href="#"><small>Leon</small></a>
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <p class="title">Suscribete a la lista de noticias</p>
-        <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam ipsa voluptates vero, quos odit ipsam quidem error unde doloremque sapiente dicta id tempore laborum cum reprehenderit, libero aspernatur aliquam perferendis.</p>
-
-        <form action="" method="POST">
-            <div class="field">
-                <label for="email">Email</label>
-
-                <div class="control">
-                    <input type="email" name="email" id="email" class="input">
-                </div>
-            </div>
-
-            <div class="field">
-                <button type="submit" class="button">Suscribeme</button>
-            </div>
-        </form>
-    </div>
+    @endif
 @endsection
 
 @section('scripts')

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\Contact;
+use App\Http\Requests\ContactEmailRequest;
 
 class AboutController extends Controller
 {
@@ -11,16 +12,11 @@ class AboutController extends Controller
         return view('about.index');
     }
 
-    public function sendEmail()
+    public function sendEmail(ContactEmailRequest $contactEmailRequest)
     {
-        $this->validate(request(), [
-            'name' => 'required',
-            'email' => 'required|email',
-            'message' => 'required'
-        ]);
-
         \Mail::to('mario.martinez@ucc.edu.ni')->send(new Contact(request()));
 
+        session()->flash('message', 'Mensaje enviado. Te contactaremos pronto');
         return redirect()->route('about');
     }
 }

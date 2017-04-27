@@ -1,28 +1,5 @@
 @extends('layouts.master')
 
-@section('hero')
-    <div class="hero is-medium is-info is-bold">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title">Title</h1>
-                <h2 class="subtitle">
-                    @lang('messages.welcome')
-                </h2>
-
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Sit ipsum fuga voluptas explicabo eligendi sequi accusantium temporibus et ducimus nihil,
-                    asperiores, possimus quae cum aut doloremque impedit soluta repellat officia!
-
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Ut, officia beatae enim blanditiis perspiciatis non ipsam eos quo laudantium accusamus veritatis,
-                    aperiam libero! Error, labore tempore sequi. Veritatis, temporibus, consequuntur!
-                </p>
-            </div>
-        </div>
-    </div>
-@endsection
-
 @section('content')
     <div class="columns">
         <div class="column is-two-thirds">
@@ -83,28 +60,48 @@
                 <h5 class="title is-5">Contactanos</h5>
 
                 <div class="content">
-                    <p>
-                        <span class="icon">
-                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                        </span>
-                        John Doe
-                        <br>
-                        <span class="icon">
-                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                        </span>
-                        john.doe@domain.subdomain
-                        <br>
-                        <span class="icon">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                        </span>
-                        (505) 8888 8878
-                        (505) 7777 7878
-                    </p>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td width="1" class="has-text-centered">
+                                    <span class="icon">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    </span>
+                                </td>
+                                <td>Leon, Nicaragua. UCC Leon</td>
+                            </tr>
+
+                            <tr>
+                                <td width="1" class="has-text-centered">
+                                    <span class="icon">
+                                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                    </span>
+                                </td>
+                                <td>John Doe</td>
+                            </tr>
+
+                            <tr>
+                                <td width="1" class="has-text-centered">
+                                    <span class="icon">
+                                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    </span>
+                                </td>
+                                <td>john.doe@domain.edu.ni</td>
+                            </tr>
+
+                            <tr>
+                                <td width="1" class="has-text-centered">
+                                    <span class="icon">
+                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                    </span>
+                                </td>
+                                <td>(505) 8888 8878, 7777 7878</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="content">
-                    <p>O bien envianos un email</p>
-
                     <form method="POST" action="about" autocomplete="off">
                         {{ csrf_field() }}
 
@@ -129,10 +126,14 @@
                             </p>
                         </div>
 
-                        <button type="submit" class="button">Enviar</button>
+                        <button type="submit" class="button is-primary">Enviar</button>
 
-                        @include('partials.errors')
+                        <p class="field">
+                            @include('partials.errors')
+                        </p>
                     </form>
+
+                    @include('partials.message')
                 </div>
             </div>
         </div>

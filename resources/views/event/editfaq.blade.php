@@ -24,7 +24,7 @@
             <label for="answer">Respuesta</label>
 
             <p class="control">
-                <input type="text" name="answer" id="answer" value="{{ $faq->answer }}" class="input">
+                <textarea name="answer" id="answer" class="textarea">{{ $faq->answer }}</textarea>
             </p>
         </div>
 

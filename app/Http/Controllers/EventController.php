@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Event;
 use App\Schedule;
 use App\EventFaq;
@@ -12,6 +13,13 @@ use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['display']
+        ]);
+    }
+
     public function index()
     {
         $events = auth()->user()->events()->orderBy('created_at', 'desc')->get();
@@ -33,6 +41,7 @@ class EventController extends Controller
         $event->address = request('address');
         $event->latitude = request('latitude');
         $event->longitude = request('longitude');
+        $event->slug = str_slug(request('name'));
         $event->description = request('description');
         // set some dummy text when stored it will be changed for real image url
         $event->image = 'temp';
@@ -161,6 +170,25 @@ class EventController extends Controller
 
     public function storeSchedule(Event $event, ScheduleRequest $scheduleRequest)
     {
+        $dates = explode(' - ', request('interval'));
 
+        $schedule = new Schedule;
+
+        $schedule->location = request('location');
+        $schedule->start_date = Carbon::parse($dates[0]);
+        $schedule->closing_date = Carbon::parse($dates[1]);
+
+        $event->schedules()->save($schedule);
+
+        session()->flash('message', 'Horario guardado');
+
+        return back();
+    }
+
+    public function display($slug)
+    {
+        $event = Event::where('slug', $slug)->first();
+
+        return view('event.display', compact('event'));
     }
 }

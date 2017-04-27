@@ -2,6 +2,58 @@
 
 @section('title', 'Crear horario')
 
+@section('stylesheets')
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+@endsection
+
+@section('scripts')
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+
+    <script>
+        $('input[name="interval"]').daterangepicker({
+            minDate: moment(),
+            timePicker: true,
+            timePickerIncrement: 15,
+            locale: {
+                format: 'YYYY-MM-DD h:mm',
+                applyLabel: 'Aplicar',
+                cancelLabel: 'Cancelar',
+                fromLabel: 'Desde',
+                toLabel: 'Hasta',
+                customRangeLabel: 'Custom',
+                weekLabel: 'S',
+                daysOfWeek: [
+                    'Do',
+                    'Lu',
+                    'Ma',
+                    'Mi',
+                    'Ju',
+                    'Vi',
+                    'Sa'
+                ],
+                monthNames: [
+                    'Enero',
+                    'Febrero',
+                    'Marzo',
+                    'Abril',
+                    'Mayo',
+                    'Junio',
+                    'Julio',
+                    'Agosto',
+                    'Septiembre',
+                    'Octubre',
+                    'Noviembre',
+                    'Diciembre'
+                ],
+                firstDay: 0
+            }
+        });
+    </script>
+@endsection
+
 @section('content')
     @include('event.bar')
 
@@ -19,57 +71,11 @@
         </div>
 
         <div class="field">
-            <label for="date">Fecha</label>
+            <label for="interval">Intervalo de fechas</label>
 
             <p class="control">
-                <input type="text" name="date" id="date" value="{{ old('date') }}" class="input">
+                <input type="date" name="interval" id="interval" value="{{ old('interval') }}" class="input">
             </p>
-        </div>
-
-        <div class="field">
-            <div class="field-body">
-                <div class="field is-grouped">
-                    <div class="field">
-                        <label for="start_time">Hora de inicio</label>
-                    
-                        <p class="control">
-                            {{-- <input type="text" name="start_time" id="start_time" value="{{ old('start_time') }}" class="input"> --}}
-                            <select name="start_time" id="start_time" class="select is-fullwidth">
-                                <option value="8">8:00</option>
-                                <option value="9">9:00</option>
-                                <option value="10">10:00</option>
-                                <option value="11">11:00</option>
-                                <option value="12">12:00</option>
-                                <option value="01">01:00</option>
-                                <option value="02">02:00</option>
-                                <option value="03">03:00</option>
-                                <option value="04">04:00</option>
-                                <option value="05">05:00</option>
-                            </select>
-                        </p>
-                    </div>
-                    
-                    <div class="field">
-                        <label for="end_time">Hora de clausura</label>
-                    
-                        <p class="control">
-                            {{-- <input type="text" name="end_time" id="end_time" value="{{ old('end_time') }}" class="input"> --}}
-                            <select name="end_time" id="end_time" class="select is-fullwidth">
-                                <option value="8">8:00</option>
-                                <option value="9">9:00</option>
-                                <option value="10">10:00</option>
-                                <option value="11">11:00</option>
-                                <option value="12">12:00</option>
-                                <option value="01">01:00</option>
-                                <option value="02">02:00</option>
-                                <option value="03">03:00</option>
-                                <option value="04">04:00</option>
-                                <option value="05">05:00</option>
-                            </select>
-                        </p>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="field">

@@ -26,9 +26,9 @@
 @endsection
 
 @section('content')
-    <div class="columns">
-        <div class="column is-three-quarters">
-            @if (count($posts))
+    @if (count($posts))
+        <div class="columns">
+            <div class="column is-three-quarters">
                 @foreach ($posts as $post)
                     <div class="box">
                         <p class="title">{{ $post->title }}</p>
@@ -39,36 +39,37 @@
                         <a href="/publication/ {{ $post->id }}" class="button">Leer mas</a>
                     </div>
                 @endforeach
-            @else
-                <div class="notification">
-                    Sin articulos que mostrar
-                </div>
-            @endif
-        </div>
-        <div class="column">
-            <div class="box">
-                <p class="field">Archivos</p>
-
-                <ul>
-                    <li>
-                        <a href="#">Abril 2017</a>
-                    </li>
-                    <li>
-                        <a href="#">Marzo 2017</a>
-                    </li>
-                    <li>
-                        <a href="#">Febrero 2017</a>
-                    </li>
-                    <li>
-                        <a href="#">Enero 2017</a>
-                    </li>
-                    <li>
-                        <a href="#">Diciembre 2016</a>
-                    </li>
-                </ul>
             </div>
 
-            @include('partials.tags')
+            <div class="column">
+                <div class="box">
+                    <p class="field">Archivos</p>
+
+                    <ul>
+                        <li>
+                            <a href="#">Abril 2017</a>
+                        </li>
+                        <li>
+                            <a href="#">Marzo 2017</a>
+                        </li>
+                        <li>
+                            <a href="#">Febrero 2017</a>
+                        </li>
+                        <li>
+                            <a href="#">Enero 2017</a>
+                        </li>
+                        <li>
+                            <a href="#">Diciembre 2016</a>
+                        </li>
+                    </ul>
+                </div>
+
+                @include('partials.tags')
+            </div>
         </div>
-    </div>
+    @else
+        <div class="message">
+            <div class="message-body">Sin articulos que mostrar</div>
+        </div>
+    @endif
 @endsection

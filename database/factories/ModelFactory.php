@@ -50,6 +50,7 @@ $factory->define(App\ProjectPhoto::class, function(Faker\Generator $faker) {
 $factory->define(App\Event::class, function(Faker\Generator $faker) {
     return [
         'name' => $faker->sentence,
+        'slug' => $faker->slug,
         'description' => $faker->paragraph,
         'image' => $faker->imageUrl,
         'price' => $faker->randomFloat,
@@ -69,8 +70,7 @@ $factory->define(App\EventFaq::class, function(Faker\Generator $faker) {
 $factory->define(App\Shedule::class, function(Faker\Generator $faker) {
     return [
         'location' => $faker->streetAddress,
-        'date' => $faker->date,
-        'start_time' => $faker->time,
-        'end_time' => $faker->time
+        'start_date' => $faker->dateTime,
+        'closing_date' => $faker->dateTime
     ];
 });

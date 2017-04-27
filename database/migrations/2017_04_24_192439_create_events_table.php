@@ -15,12 +15,13 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
             $table->text('description');
             $table->string('image')->unique();
             $table->boolean('is_published')->default(false);
             $table->decimal('price', 5, 2);
-            $table->string('address')->default('UCC, León');
+            $table->string('address')->default('UCC, Campus León');
             $table->double('latitude', 10, 7)->nullable()->default(12.418568);
             $table->double('longitude', 10, 7)->nullable()->default(-86.877374);
             $table->integer('user_id');
