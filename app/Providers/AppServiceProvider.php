@@ -31,11 +31,21 @@ class AppServiceProvider extends ServiceProvider
         });
 
         app('view')->composer('partials.tags', function($view) {
-            $view->with('tags', \App\Tag::orderBy('name', 'asc')->get());
+            $view->with('tags', \App\Tag::latest()->has('posts')->get());
         });
 
         app('view')->composer('post.tags', function($view) {
-            $view->with('tags', \App\Tag::orderBy('name', 'asc')->get());
+            $view->with('tags', \App\Tag::latest()->get());
+        });
+
+        app('view')->composer('post.archives', function($view) {
+            $view
+                ->with('archives', \App\Post::selectRaw('YEAR(created_at) year, MONTHNAME(created_at) month, count(*) published')
+                ->groupBy('year', 'month')
+                ->orderByRaw('min(created_at) desc')
+                ->get()
+                ->toArray()
+            );
         });
     }
 
