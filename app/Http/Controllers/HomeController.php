@@ -9,10 +9,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $projects = Project::latest()->get();
-        $heros = ['is-info', 'is-danger', 'is-warning', 'is-primary'];
+        $projects = Project::latest()->where('is_published', true)->take(2)->get();
         $events = Event::latest()->where('is_published', true)->get();
 
-        return view('home.index', compact('projects', 'heros', 'events'));
+        return view('home.index', compact('projects', 'events'));
     }
 }

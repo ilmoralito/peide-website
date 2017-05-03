@@ -8,9 +8,7 @@
     @include('partials.projects.tab')
 
     @if (count($projectFaqs))
-        <div class="is-clearfix">
-            <a href="/admin/projects/{{ $project->id }}/faqs/create" class="button is-primary is-pulled-right">Crear FAQ</a>
-        </div>
+        <a href="/admin/projects/{{ $project->id }}/faqs/create" class="button is-primary is-outlined is-pulled-right">Crear FAQ</a>
 
         <table class="table">
             <colgroup>
@@ -37,7 +35,7 @@
             </tbody>
         </table>
     @else
-        <a href="/admin/projects/{{ $project->id }}/faqs/create" class="button is-primary is-pulled-right">Crear FAQ</a>
+        <a href="/admin/projects/{{ $project->id }}/faqs/create" class="button is-primary is-outlined">Crear FAQ</a>
     @endif
 
     @include('partials.message')

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PostRequest extends FormRequest
 {
@@ -23,10 +24,18 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title' => 'required|unique:posts',
-            'body' => 'required',
-            'tags' => 'required'
-        ];
+        if (isset($this->post)) {
+            return [
+                'title' => 'required|unique:posts,title,' . $this->post->id,
+                'body' => 'required',
+                'tags' => 'required'
+            ];
+        } else {
+            return [
+                'title' => 'required|unique:posts,title',
+                'body' => 'required',
+                'tags' => 'required'
+            ];
+        }
     }
 }

@@ -1,104 +1,106 @@
 @extends('layouts.master')
 
-@section('stylesheets')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+@section('hero')
+    <section class="hero is-primary is-bold" style="margin-bottom: 10px;">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Hero title</h1>
+                <h2 class="subtitle">Hero subtitle</h2>
+
+                <p class="field">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio nobis harum, sapiente mollitia nihil hic debitis labore error maxime, nostrum dolorem nam ab quae reprehenderit et, veritatis numquam vitae adipisci.
+                </p>
+            </div>
+        </div>
+    </section>
 @endsection
 
 @section('content')
-    <div class=" carousel">
-        @foreach ($projects as $project)
-            <div class="section hero {{ $heros[array_rand($heros, 1)] }} is-bold is-medium">
-                <div class="container">
-                    <div class="heading">
-                        <p class="title">{{ $project->name }}</p>
-                        <p class="subtitle">{{ str_limit($project->description, 30) }}</p>
-                    </div>
+    @if (count($projects))
+        <p class="subtitle">Proyectos</p>
 
-                    <p class="field">{{ str_limit($project->body, 50) }}</p>
-                    <p class="field">
-                        <a href="projects/{{ $project->slug }}" class="button is-info">Saber mas</a>
-                    </p>
-                </div>
-            </div>
-        @endforeach
-    </div>
+        <div class="columns is-multiline">
+            @foreach ($projects as $project)
+                <div class="column is-half">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="{{ $project->projectPhotos()->first()->url }}" alt="{{ $project->name }}">
+                            </figure>
+                        </div>
 
-    @if (count($events))
-        <br>
-
-        <table class="table">
-            <caption>EVENTOS</caption>
-
-            <colgroup>
-                <col span="1" style="width: 40%;">
-                <col span="1" style="width: 60%;">
-            </colgroup>
-
-            <tbody>
-                @foreach ($events as $event)
-                    <tr>
-                        <td>
-                            <div class="card">
-                                <div class="card-image">
-                                    <figure class="image">
-                                        <img src="{{ $event->image }}" alt="{{ $event->name }}">
-                                    </figure>
-                                </div>
-
-                                <div class="card-content">
-                                    <div class="content">
-                                        <p>{{ $event->price > 0.00 ? $event->price : 'GRATIS' }}</p>
-                                    </div>
-                                </div>
-
-                                <div class="card-footer">
-                                    <a href="/events/{{ $event->slug }}" class="card-footer-item">Saber mas</a>
-                                </div>
+                        <div class="card-content">
+                            <div class="content">
+                                {{ $project->name }}
                             </div>
-                        </td>
+                        </div>
 
-                        <td>
-                            <p class="subtitle">{{ $event->name }}</p>
+                        <footer class="card-footer">
+                            <div class="card-footer-item">
+                                <a href="/projects/{{ $project->slug }}">Saber mas</a>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+            @endforeach
 
-                            <p>
-                                <span class="icon">
-                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                </span>
-                                {{ $event->address }}
-                            </p>
-
-                            <p>
-                                <span class="icon">
-                                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                                </span>
-                                {{ $event->schedules[0]->start_date }}
-                            </p>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    @else
-        <div class="message">
-            <div class="message-body">
-                No hay eventos proximos, puedes visitar <a href="#">archivos</a>
+            <div class="column">
+                <p>
+                    <a href="projectList" class="button is-outlined is-primary">Visita la lista de proyectos</a>
+                </p>
             </div>
         </div>
     @endif
-@endsection
 
-@section('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.carousel').slick({
-                dots: true,
-                arrows: false,
-                autoplay: true,
-                autoplaySpeed: 5000
-            });
-        });
-    </script>
+    @if (count($events))
+        <p class="subtitle">Eventos</p>
+
+        <div class="columns is-multiline">
+            @foreach ($events as $event)
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="{{ $event->image }}" alt="{{ $event->name }}">
+                            </figure>
+                        </div>
+
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                    @if (count($event->schedules))
+                                        {{ $event->schedules->first()->start_date }}
+                                    @else
+                                        Sin fecha de inicio programada
+                                    @endif
+                                </div>
+
+                                <div class="media-content">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="content">{{ $event->name }}</div>
+                        </div>
+
+                        <footer class="card-footer">
+                            <a href="events/{{ $event->slug }}" class="card-footer-item">Saber mas</a>
+                        </footer>
+                    </div>
+                </div>
+            @endforeach
+
+            <div class="column">
+                <div>
+                    <p>Mas informacion sobre alianzas, programas, etc...</p>
+
+                    <div class="field">
+                        <p class="control">
+                            <a href="about" class="button is-info is-outlined">Contactanos</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 @endsection

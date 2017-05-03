@@ -1,130 +1,130 @@
 @extends('layouts.master')
 
 @section('stylesheets')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/unslider/2.0.3/css/unslider.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/unslider/2.0.3/css/unslider-dots.css">
     <style>
         .resp-sharing-button__link,
         .resp-sharing-button__icon {
-          display: inline-block
+            display: inline-block
         }
 
         .resp-sharing-button__link {
-          text-decoration: none;
-          color: #fff;
-          margin: 0.5em
+            text-decoration: none;
+            color: #fff;
+            margin: 0.5em
         }
 
         .resp-sharing-button {
-          border-radius: 5px;
-          transition: 25ms ease-out;
-          padding: 0.5em 0.75em;
-          font-family: Helvetica Neue,Helvetica,Arial,sans-serif
+            border-radius: 5px;
+            transition: 25ms ease-out;
+            padding: 0.5em 0.75em;
+            font-family: Helvetica Neue,Helvetica,Arial,sans-serif
         }
 
         .resp-sharing-button__icon svg {
-          width: 1em;
-          height: 1em;
-          margin-right: 0.4em;
-          vertical-align: top
+            width: 1em;
+            height: 1em;
+            margin-right: 0.4em;
+            vertical-align: top
         }
 
         .resp-sharing-button--small svg {
-          margin: 0;
-          vertical-align: middle
+            margin: 0;
+            vertical-align: middle
         }
 
         /* Non solid icons get a stroke */
         .resp-sharing-button__icon {
-          stroke: #fff;
-          fill: none
+            stroke: #fff;
+            fill: none
         }
 
         /* Solid icons get a fill */
         .resp-sharing-button__icon--solid,
         .resp-sharing-button__icon--solidcircle {
-          fill: #fff;
-          stroke: none
+            fill: #fff;
+            stroke: none
         }
 
         .resp-sharing-button--twitter {
-          background-color: #55acee
+            background-color: #55acee
         }
 
         .resp-sharing-button--twitter:hover {
-          background-color: #2795e9
+            background-color: #2795e9
         }
 
         .resp-sharing-button--pinterest {
-          background-color: #bd081c
+            background-color: #bd081c
         }
 
         .resp-sharing-button--pinterest:hover {
-          background-color: #8c0615
+            background-color: #8c0615
         }
 
         .resp-sharing-button--facebook {
-          background-color: #3b5998
+            background-color: #3b5998
         }
 
         .resp-sharing-button--facebook:hover {
-          background-color: #2d4373
+            background-color: #2d4373
         }
 
         .resp-sharing-button--tumblr {
-          background-color: #35465C
+            background-color: #35465C
         }
 
         .resp-sharing-button--tumblr:hover {
-          background-color: #222d3c
+            background-color: #222d3c
         }
 
         .resp-sharing-button--reddit {
-          background-color: #5f99cf
+            background-color: #5f99cf
         }
 
         .resp-sharing-button--reddit:hover {
-          background-color: #3a80c1
+            background-color: #3a80c1
         }
 
         .resp-sharing-button--google {
-          background-color: #dd4b39
+            background-color: #dd4b39
         }
 
         .resp-sharing-button--google:hover {
-          background-color: #c23321
+            background-color: #c23321
         }
 
         .resp-sharing-button--linkedin {
-          background-color: #0077b5
+            background-color: #0077b5
         }
 
         .resp-sharing-button--linkedin:hover {
-          background-color: #046293
+            background-color: #046293
         }
 
         .resp-sharing-button--email {
-          background-color: #777
+            background-color: #777
         }
 
         .resp-sharing-button--email:hover {
-          background-color: #5e5e5e
+            background-color: #5e5e5e
         }
 
         .resp-sharing-button--xing {
-          background-color: #1a7576
+            background-color: #1a7576
         }
 
         .resp-sharing-button--xing:hover {
-          background-color: #114c4c
+            background-color: #114c4c
         }
 
         .resp-sharing-button--whatsapp {
-          background-color: #25D366
+            background-color: #25D366
         }
 
         .resp-sharing-button--whatsapp:hover {
-          background-color: #1da851
+            background-color: #1da851
         }
 
         .resp-sharing-button--hackernews {
@@ -133,111 +133,63 @@
         .resp-sharing-button--hackernews:hover, .resp-sharing-button--hackernews:focus {   background-color: #FB6200 }
 
         .resp-sharing-button--vk {
-          background-color: #507299
+            background-color: #507299
         }
 
         .resp-sharing-button--vk:hover {
-          background-color: #43648c
+            background-color: #43648c
         }
 
         .resp-sharing-button--facebook {
-          background-color: #3b5998;
-          border-color: #3b5998;
+            background-color: #3b5998;
+            border-color: #3b5998;
         }
 
         .resp-sharing-button--facebook:hover,
         .resp-sharing-button--facebook:active {
-          background-color: #2d4373;
-          border-color: #2d4373;
+            background-color: #2d4373;
+            border-color: #2d4373;
         }
 
         .resp-sharing-button--email {
-          background-color: #777777;
-          border-color: #777777;
+            background-color: #777777;
+            border-color: #777777;
         }
 
         .resp-sharing-button--email:hover,
         .resp-sharing-button--email:active {
-          background-color: #5e5e5e;
-          border-color: #5e5e5e;
+            background-color: #5e5e5e;
+            border-color: #5e5e5e;
         }
 
         .resp-sharing-button--whatsapp {
-          background-color: #25D366;
-          border-color: #25D366;
+            background-color: #25D366;
+            border-color: #25D366;
         }
 
         .resp-sharing-button--whatsapp:hover,
         .resp-sharing-button--whatsapp:active {
-          background-color: #1DA851;
-          border-color: #1DA851;
+            background-color: #1DA851;
+            border-color: #1DA851;
+        }
+
+        nav.unslider-nav {
+            background: rgba(0, 0, 0, 0.5);
         }
     </style>
 @endsection
 
-@section('content')
-    <div class="columns">
-        <div class="column is-three-quarters">
-            <div class="content">
-                <p class="title">{{ $project->name }}</p>
-                <p class="subtitle">{{ $project->description }}</p>
-                <p>Publicado por: {{ $project->user->name }}</p>
-                @if ($project->url)
-                    <p>
-                        Sitio web: <a href="{{ $project->url }}">{{ $project->url }}</a>
-                    </p>
-                @endif
-
-                <div class="carousel">
-                    @foreach($project->projectPhotos as $photo)
-                        <figure class="image">
-                            <img src="{{ $photo->url }}" alt="">
-                        </figure>
-                    @endforeach
-                </div>
-
-                <p>Acerca del proyecto</p>
-                <p class="content">{{ $project->body }}</p>
-            </div>
-        </div>
-
-        <div class="column">
-            @include('partials.share', [
-                'name' => $project->name,
-                'type' => 'proyecto'
-            ])
-
-            @if (count($project->projectFaqs))
-                @include('partials.faqs', [ 'faqs' => $project->projectFaqs ])
-
-                @include('partials.faq', [
-                    'email' => $project->user->email,
-                    'name' => $project->name,
-                    'type' => 'proyecto'
-                ])
-            @else
-                @include('partials.faq', [
-                    'email' => $project->user->email,
-                    'name' => $project->name,
-                    'type' => 'proyecto'
-                ])
-            @endif
-        </div>
-    </div>
-@endsection
-
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/unslider/2.0.3/js/unslider-min.js"></script>
     <script>
         $(document).ready(function() {
-            $('.carousel').slick({
-                dots: true,
-                arrows: false,
+            $('.slider').unslider({
                 autoplay: true,
-                autoplaySpeed: 5000
+                arrows: false
             });
 
+            // Toggle modal
             $('#sharingButton').on('click', function() {
                 $('.modal').addClass('is-active');
             });
@@ -270,4 +222,61 @@
             });
         });
     </script>
+@endsection
+
+@section('content')
+    <div class="columns">
+        <div class="column is-three-quarters">
+            <div class="content">
+                <p class="title">{{ $project->name }}</p>
+                <p class="subtitle">{{ $project->description }}</p>
+                <p>Publicado por: {{ $project->user->name }}</p>
+
+                @if ($project->url)
+                    <p>
+                        Sitio web: <a href="{{ $project->url }}">{{ $project->url }}</a>
+                    </p>
+                @endif
+
+                <div class="slider">
+                    <ul>
+                        @foreach($project->projectPhotos as $photo)
+                            <li style="height: 400px;">
+                                <figure class="image ">
+                                    <img src="{{ $photo->url }}" alt="{{ $project->name }}">
+                                </figure>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+
+                <br>
+                <p>Acerca del proyecto</p>
+                <p class="content">{!! $project->body !!}</p>
+            </div>
+        </div>
+
+        <div class="column">
+            @include('partials.share', [
+                'name' => $project->name,
+                'type' => 'proyecto'
+            ])
+
+            @if (count($project->projectFaqs))
+                @include('partials.faqs', [ 'faqs' => $project->projectFaqs ])
+
+                @include('partials.faq', [
+                    'email'=> $project->user->email,
+                    'name' => $project->name,
+                    'type' => 'proyecto'
+                ])
+            @else
+                @include('partials.faq', [
+                    'email'=> $project->user->email,
+                    'name' => $project->name,
+                    'type' => 'proyecto'
+                ])
+            @endif
+        </div>
+    </div>
 @endsection

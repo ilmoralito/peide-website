@@ -5,7 +5,7 @@
 @section('content')
     @if (count($events))
         <div class="is-clearfix">
-            <a href="/admin/events/create" class="button is-primary is-pulled-right">Crear evento</a>
+            <a href="/admin/events/create" class="button is-primary is-outlined is-pulled-right">Crear evento</a>
         </div>
 
         <table class="table">
@@ -29,7 +29,7 @@
         </table>
     @else
         <div class="is-clearfix">
-            <a href="/admin/events/create" class="button is-primary is-pulled-right">Crear evento</a>
+            <a href="/admin/events/create" class="button is-primary is-outlined is-pulled-right">Crear evento</a>
         </div>
     @endif
 

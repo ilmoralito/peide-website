@@ -1,3 +1,5 @@
+<label for="tags" style="display: block; margin-bottom: 10px;">Etiquetas</label>
+
 @foreach ($tags as $tag)
     <div class="field">
         <p class="control">
@@ -5,16 +7,11 @@
                 <input
                     type="checkbox"
                     name="tags[]"
-                    id="tags"
-                    value="{{ $tag->id }}"
-                    {{--
-                        @if ($post->tags->contains('id', $tag->id))
-                            checked=true
-                        @else
-
-                        @endif
-                    --}}>
-                {{ $tag->name }}
+                    @if (isset($post) && in_array($tag->id, $post->tags()->pluck('id')->all()))
+                        checked
+                    @endif
+                    value="{{ $tag->id }}">
+                    {{ $tag->name }}
             </label>
         </p>
     </div>

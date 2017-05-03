@@ -20,9 +20,6 @@
                 Proyectos
             </a>
         </li>
-        <li>
-            <a href="#">Alianzas</a>
-        </li>
     </ul>
 
     <p class="menu-label">Administracion</p>

@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="is-clearfix">
-        <a href="/admin/projects/create" class="button is-primary is-pulled-right">Crear projecto</a>
+        <a href="/admin/projects/create" class="button is-primary is-outlined is-pulled-right">Crear projecto</a>
     </div>
 
     @if (count($projects))

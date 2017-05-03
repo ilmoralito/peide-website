@@ -25,7 +25,7 @@
                                     {{ method_field('DELETE') }}
                                     <input type="hidden" name="id" value="{{ $photo->id }}">
 
-                                    <button type="submit" class="button is-danger is-fullwidth">
+                                    <button type="submit" class="button is-danger is-outlined is-fullwidth">
                                         Eliminar
                                     </button>
                                 </form>
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="field">
-                        <button type="submit" class="button is-primary is-fullwidth">Subir</button>
+                        <button type="submit" class="button is-primary is-outlined is-fullwidth">Subir</button>
                     </div>
 
                     @include('partials.errors')

@@ -13,7 +13,7 @@
 
     <div id="nav-menu" class="nav-right nav-menu">
         <a href="/" class="nav-item {{ $controller == 'HomeController' ? 'is-active is-tab' : '' }}">Home</a>
-        <a href="/publications" class="nav-item {{ $controller == 'PostController' ? 'is-active is-tab' : '' }}">Blog</a>
+        <a href="/publications" class="nav-item {{ $controller == 'PostController' || $action == 'posts' ? 'is-active is-tab' : '' }}">Blog</a>
         <a href="/projectList" class="nav-item {{ $controller == 'ProjectController' ? 'is-active is-tab' : '' }}">Proyectos</a>
         <a href="/about" class="nav-item {{ $controller == 'AboutController' ? 'is-active is-tab' : '' }}">About us</a>
     </div>

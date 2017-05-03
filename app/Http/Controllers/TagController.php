@@ -9,7 +9,9 @@ class TagController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', [
+            'except' => ['posts']
+        ]);
     }
 
     public function index()
@@ -30,6 +32,7 @@ class TagController extends Controller
 
         $tag->save();
 
+        session()->flash('message', 'Etiqueta agregada');
         return redirect()->route('createTag');
     }
 
@@ -38,22 +41,28 @@ class TagController extends Controller
         return view('tags/edit', [ 'tag' => $tag ]);
     }
 
-    public function update(TagRequest $request)
+    public function update(TagRequest $request, Tag $tag)
     {
-        $tag = Tag::find(request()->id);
-
         $tag->name = request('name');
+
         $tag->save();
 
+        session()->flash('message', 'Etiqueta actualizada');
         return redirect()->route('editTag', [$tag]);
     }
 
     public function destroy()
     {
-        $tag = Tag::find(request()->id);
+        Tag::findOrFail(request()->id)->delete();
 
-        $tag->delete();
-
+        session()->flash('message', 'Etiqueta eliminada');
         return redirect()->route('tags');
+    }
+
+    public function posts(Tag $tag)
+    {
+        $posts = $tag->posts()->where('is_published', 1)->get();
+
+        return view('post.publications', compact('posts'));
     }
 }

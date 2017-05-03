@@ -1,11 +1,9 @@
-<div class="box">
-    <p class="field">Etiquetas</p>
+<p>Etiquetas</p>
 
+<ul>
     @foreach ($tags as $tag)
-        <div class="field">
-            <a href="#">
-                <span class="tag is-primary">{{ $tag->name }}</span>
-            </a>
-        </div>
+        <li>
+            <a href="/publications/tags/{{ $tag->name }}">{{ $tag->name }}</a>
+        </li>
     @endforeach
-</div>
+</ul>

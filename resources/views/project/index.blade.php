@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('hero')
-    <div class="hero is-medium is-light">
+    <div class="hero is-light">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">Title</h1>
@@ -29,8 +29,6 @@
             <div class="content">
                 <p class="title">{{ $project->name }}</p>
                 <p class="subtitle">{{ $project->description }}</p>
-                
-                <p>{{ str_limit($project->body, 100) }}</p>
 
                 <p class="field">
                     <a href="projects/{{ $project->slug }}" class="button is-info">Saber mas</a>

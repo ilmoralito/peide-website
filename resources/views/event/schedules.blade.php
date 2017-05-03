@@ -9,7 +9,7 @@
 
     @if (count($schedules))
         <div class="is-clearfix">
-            <a href="/admin/events/{{ $event->id }}/schedules/create" class="button is-primary is-pulled-right">Crear horario</a>
+            <a href="/admin/events/{{ $event->id }}/schedules/create" class="button is-primary is-outlined is-pulled-right">Crear horario</a>
         </div>
 
         <table class="table">
@@ -42,7 +42,7 @@
             </tbody>
         </table>
     @else
-        <a href="/admin/events/{{ $event->id }}/schedules/create" class="button is-primary">Crear horario</a>
+        <a href="/admin/events/{{ $event->id }}/schedules/create" class="button is-primary is-outlined">Crear horario</a>
     @endif
 
     @include('partials.message')

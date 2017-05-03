@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['posts']
+        ]);
+    }
+
     public function edit()
     {
         $user = auth()->user();
@@ -81,5 +88,12 @@ class UserController extends Controller
 
         session()->flash('message', 'Avatar subido');
         return back();
+    }
+
+    public function posts(User $user)
+    {
+        $posts = $user->posts()->where('is_published', 1)->get();
+
+        return view('post.publications', compact('posts'));
     }
 }

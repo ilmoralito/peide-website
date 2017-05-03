@@ -72,10 +72,8 @@ class ProjectController extends Controller
         return view('project.edit', compact('project'));
     }
 
-    public function update(ProjectRequest $request)
+    public function update(ProjectRequest $request, Project $project)
     {
-        $project = Project::findOrFail(request('id'));
-
         $project->name = request('name');
         $project->description = request('description');
         $project->url = request('url');
@@ -86,8 +84,7 @@ class ProjectController extends Controller
         $project->save();
 
         session()->flash('message', 'Proyecto actualizado exitosamente');
-
-        return redirect()->route('showProject', [ 'id' => $project->id ]);
+        return back();
     }
 
     public function destroy()

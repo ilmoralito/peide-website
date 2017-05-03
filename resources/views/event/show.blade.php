@@ -14,14 +14,6 @@
         </colgroup>
         <tbody>
             <tr>
-                <td>Imagen</td>
-                <td>
-                    <figure class="image">
-                        <img src="{{ $event->image }}" alt="{{ $event->name }}">
-                    </figure>
-                </td>
-            </tr>
-            <tr>
                 <td>Estado</td>
                 <td>
                     <strong>{{ $event->is_published ? 'Publicado' : 'Sin publicar' }}</strong>

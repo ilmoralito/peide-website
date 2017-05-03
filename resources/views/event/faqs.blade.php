@@ -9,7 +9,7 @@
 
     @if (count($faqs))
         <div class="is-clearfix">
-            <a href="/admin/events/{{ $event->id }}/faqs/create" class="button is-primary is-pulled-right">Crear FAQ</a>
+            <a href="/admin/events/{{ $event->id }}/faqs/create" class="button is-primary is-outlined is-pulled-right">Crear FAQ</a>
         </div>
 
         <table class="table">
@@ -32,7 +32,7 @@
             </tbody>
         </table>
     @else
-        <a href="/admin/events/{{ $event->id }}/faqs/create" class="button is-primary">Crear FAQ</a>
+        <a href="/admin/events/{{ $event->id }}/faqs/create" class="button is-primary is-outlined">Crear FAQ</a>
     @endif
 
     @include('partials.message')

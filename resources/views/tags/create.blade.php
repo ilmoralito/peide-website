@@ -14,4 +14,6 @@
 
         @include('partials.errors')
     </form>
+
+    @include('partials.message')
 @endsection

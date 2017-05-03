@@ -23,8 +23,16 @@ class TagRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|unique:tags|max:255'
-        ];
+        if (isset($this->tag)) {
+            return [
+                'name' => 'required|unique:tags,name,' . $this->tag->id . '|max:255'
+            ];
+        } else {
+            return [
+                'name' => [
+                    'required', 'unique:tags'
+                ]
+            ];
+        }
     }
 }

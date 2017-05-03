@@ -23,14 +23,26 @@ class EventRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required',
-            'image' => 'required|mimes:jpeg,jpg,png|max:1000',
-            'price' => 'required',
-            'address' => 'required',
-            // 'latitude' => 'required',
-            // 'longitude' => 'required',
-            'description' => 'required'
-        ];
+        if (isset($this->event)) {
+            return [
+                'name' => 'required|unique:events,name,' . $this->event->id,
+                'image' => 'required|mimes:jpeg,jpg,png|max:1000',
+                'price' => 'required',
+                'address' => 'required',
+                // 'latitude' => 'required',
+                // 'longitude' => 'required',
+                'description' => 'required'
+            ];
+        } else {
+            return [
+                'name' => 'required|unique:events,name',
+                'image' => 'required|mimes:jpeg,jpg,png|max:1000',
+                'price' => 'required',
+                'address' => 'required',
+                // 'latitude' => 'required',
+                // 'longitude' => 'required',
+                'description' => 'required'
+            ];
+        }
     }
 }

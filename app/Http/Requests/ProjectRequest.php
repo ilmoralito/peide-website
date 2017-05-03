@@ -23,11 +23,20 @@ class ProjectRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|unique:projects',
-            'description' => 'required',
-            'body' => 'required',
-            'url' => 'nullable|url'
-        ];
+        if (isset($this->project)) {
+            return [
+                'name' => 'required|unique:projects,name,' . $this->project->id,
+                'description' => 'required',
+                'body' => 'required',
+                'url' => 'nullable|url'
+            ];
+        } else {
+            return [
+                'name' => 'required|unique:projects,name',
+                'description' => 'required',
+                'body' => 'required',
+                'url' => 'nullable|url'
+            ];
+        }
     }
 }

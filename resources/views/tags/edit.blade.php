@@ -3,15 +3,27 @@
 @section('title', 'Editar etiqueta')
 
 @section('content')
-    <form action="/admin/tags/update" autocomplete="off" method="POST">
+    <div class="is-clearfix">
+        <form action="/admin/tags/delete" method="POST" class="is-pulled-right">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+        
+            <input type="hidden" name="id" value="{{ $tag->id }}">
+        
+            <button type="submit" class="button is-danger is-outlined">Eliminar</button>
+        </form>
+    </div>
+
+    <form action="/admin/tags/{{ $tag->name }}/update" autocomplete="off" method="POST">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
-        <input type="hidden" name="id" value="{{ $tag->id }}">
 
         @include('tags.form')
 
         <div class="field">
-            <button type="submit" class="button is-primary">Actualizar</button>
+            <p class="control">
+                <button type="submit" class="button is-primary is-outlined">Actualizar</button>
+            </p>
         </div>
 
         @include('partials.errors')

@@ -14,5 +14,17 @@
     </p>
 </div>
 
-<label>Etiquetas</label>
-@include('post.tags')
+@if (isset($post))
+    <div class="field">
+        <p class="control">
+            <label for="is_published" class="checkbox">
+                <input
+                    type="checkbox"
+                    name="is_published"
+                    id="is_published"
+                    @if ($post->is_published) checked @endif>
+                Publicar
+            </label>
+        </p>
+    </div>
+@endif

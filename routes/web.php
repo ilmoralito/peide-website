@@ -4,7 +4,9 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('events/{slug}', 'EventController@display');
 
 Route::get('publications', 'PostController@publications')->name('publications');
-Route::get('publication/{id}', 'PostController@publication');
+Route::get('posts/{slug}', 'PostController@publication');
+Route::get('publications/users/{user}', 'UserController@posts');
+Route::get('publications/tags/{tag}', 'TagController@posts');
 
 Route::get('projectList', 'ProjectController@index')->name('projectList');
 Route::get('projects/{slug}', 'ProjectController@display');
@@ -23,7 +25,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('projects/store', 'ProjectController@store');
     Route::get('projects/show/{project}', 'ProjectController@show')->name('showProject');
     Route::get('projects/{project}/edit', 'ProjectController@edit');
-    Route::patch('projects/update', 'ProjectController@update');
+    Route::patch('projects/{project}/update', 'ProjectController@update');
     Route::delete('projects/delete', 'ProjectController@destroy');
 
     // PROJECTS FAQS
@@ -46,7 +48,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('events/store', 'EventController@store');
     Route::get('events/show/{event}', 'EventController@show');
     Route::get('events/{event}/edit', 'EventController@edit');
-    Route::patch('events/update', 'EventController@update');
+    Route::patch('events/{event}/update', 'EventController@update');
     Route::delete('events/delete', 'EventController@destroy');
 
     // EVENT FAQS
@@ -67,9 +69,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('posts', 'PostController@index')->name('posts');
     Route::get('posts/create', 'PostController@create');
     Route::post('posts/store', 'PostController@store');
-    Route::get('posts/show/{id}', 'PostController@show');
+    Route::get('posts/show/{id}', 'PostController@show')->name('showPost');
     Route::get('posts/{id}/edit', 'PostController@edit');
-    Route::patch('posts/update', 'PostController@update')->name('editPost');
+    Route::patch('posts/{post}/update', 'PostController@update')->name('editPost');
     Route::delete('posts/delete', 'PostController@destroy');
 
     // TAGS
@@ -77,7 +79,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('tags/create', 'TagController@create')->name('createTag');
     Route::post('tags', 'TagController@store');
     Route::get('tags/{tag}/edit', 'TagController@edit')->name('editTag');
-    Route::patch('tags/update', 'TagController@update');
+    Route::patch('tags/{tag}/update', 'TagController@update');
     Route::delete('tags/delete', 'TagController@destroy');
 
     // USER

@@ -216,18 +216,18 @@
                 <figure class="image">
                     <img src="{{ $event->image }}" alt="{{ $event->name }}">
                 </figure>
-
+    
                 <br>
-
+    
                 <p class="subtitle">Descripcion</p>
-
+    
                 <p>{!! $event->description !!}</p>
             </div>
         </div>
-
+    
         <div class="column is-one-quarter">
             <p class="title">{{ $event->name }}</p>
-
+    
             <div class="content">
                 <table class="table">
                     <tbody>
@@ -239,7 +239,7 @@
                             </td>
                             <td>{{ $event->user->name }}</td>
                         </tr>
-
+    
                         <tr>
                             <td width="1">
                                 <span class="icon">
@@ -248,16 +248,22 @@
                             </td>
                             <td>{{ $event->address }}</td>
                         </tr>
-
+    
                         <tr>
                             <td width="1">
                                 <span class="icon">
                                     <i class="fa fa-calendar-o" aria-hidden="true"></i>
                                 </span>
                             </td>
-                            <td>{{ $event->schedules[0]->start_date }}</td>
+                            <td>
+                                @if (count($event->schedules))
+                                    {{ $event->schedules[0]->start_date }}
+                                @else
+                                    Sin fecha programada
+                                @endif
+                            </td>
                         </tr>
-
+    
                         <tr>
                             <td width="1">
                                 <span class="icon">
@@ -269,17 +275,17 @@
                     </tbody>
                 </table>
             </div>
-
+    
             @include('partials.share', [
                 'name' => $event->name,
                 'type' => 'evento'
             ])
-
+    
             @if (count($event->schedules) > 1)
                 <div class="content">
                     <table class="table">
                         <caption>Horarios</caption>
-
+    
                         <tbody>
                             @foreach ($event->schedules as $schedule)
                                 <tr>
@@ -292,11 +298,11 @@
                     </table>
                 </div>
             @endif
-
+    
             <div class="content">
                 @if (count($event->faqs))
                     @include('partials.faqs', [ 'faqs' => $event->faqs ])
-
+    
                     @include('partials.faq', [
                         'email' => $event->user->email,
                         'name' => $event->name,

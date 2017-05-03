@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use App\Post;
 use App\Http\Requests\PostRequest;
 
@@ -16,21 +17,24 @@ class PostController extends Controller
 
     public function publications()
     {
-        $posts = Post::where('is_published', true)
-            ->orderBy('created_at', 'asc')
+        $posts = Post::latest()
+            ->where('is_published', true)
+            ->filter(request(['month', 'year']))
             ->get();
 
         return view('post.publications', compact('posts'));
     }
 
-    public function publication(Post $post)
+    public function publication($slug)
     {
+        $post = Post::where('slug', $slug)->first();
+
         return view('post.publication', compact('post'));
     }
 
     public function index()
     {
-        $posts = Post::where('user_id', '=', auth()->user()->id)->orderBy('created_at', 'asc')->get();
+        $posts = auth()->user()->posts()->latest()->get();
 
         return view('post.index', compact('posts'));
     }
@@ -46,6 +50,7 @@ class PostController extends Controller
 
         $post->title = request('title');
         $post->body = request('body');
+        $post->slug = str_slug(request('title'));
 
         auth()->user()->posts()->save($post);
 
@@ -61,8 +66,8 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::with('tags')->where([
-            [ 'id', '=', $id ],
-            [ 'user_id', '=', auth()->user()->id ]
+            [ 'id', $id ],
+            [ 'user_id', auth()->user()->id ]
         ])->first();
 
         return view('post.show', compact('post'));
@@ -71,16 +76,25 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::with('tags')->where([
-            [ 'id', '=', $id ],
-            [ 'user_id', '=', auth()->user()->id ]
+            [ 'id', $id ],
+            [ 'user_id', auth()->user()->id ]
         ])->first();
 
         return view('post.edit', compact('post'));
     }
 
-    public function update()
+    public function update(PostRequest $postRequest, Post $post)
     {
-        
+        $post->title = request('title');
+        $post->body = request('body');
+        $post->slug = str_slug(request('title'));
+        $post->is_published = request()->has('is_published');
+
+        $post->save();
+        $post->tags()->sync((request('tags')));
+
+        session()->flash('message', 'Publicacion actualizada');
+        return redirect()->route('showPost', $post);
     }
 
     public function destroy()

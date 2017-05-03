@@ -28,7 +28,7 @@
                 </div>
             
                 <div class="field">
-                    <button type="submit" class="button is-primary">Actualizar</button>
+                    <button type="submit" class="button is-primary is-outlined">Actualizar</button>
                 </div>
             
                 @include('partials.errors')

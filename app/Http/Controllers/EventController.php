@@ -68,9 +68,8 @@ class EventController extends Controller
         return view('event.edit', compact('event'));
     }
 
-    public function update(EventRequest $eventRequest)
+    public function update(EventRequest $eventRequest, Event $event)
     {
-        $event = Event::findOrFail(request('id'));
         $directory = 'events/' . $event->id;
         Storage::disk('s3')->deleteDirectory($directory);
         $image = request()->file('image')->store($directory);

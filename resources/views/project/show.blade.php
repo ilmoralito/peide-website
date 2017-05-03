@@ -53,7 +53,7 @@
             </tr>
             <tr>
                 <td>Contenido</td>
-                <td>{{ $project->body }}</td>
+                <td>{!! $project->body !!}</td>
             </tr>
         </tbody>
     </table>
