@@ -6,7 +6,7 @@
             <div class="columns">
                 <div class="column">
                     <p>Mision</p>
-
+    
                     <p>
                         Promover en los discentes y en la sociedad civil una actitud emprendedora
                         desarrollando valores humanísticos, liderazgo y competencias necesarias para que sean agentes de cambio
@@ -15,7 +15,7 @@
                 </div>
                 <div class="column">
                     <p>Vision</p>
-
+    
                     <p>
                         Ser reconocidos a nivel nacional como un programa de formación integral
                         que le permita a los estudiantes emprendedores fortalecer sus competencias de liderazgo,
@@ -26,7 +26,7 @@
             <div class="columns">
                 <div class="column">
                     <p>Alianzas</p>
-
+    
                     <ul>
                         <li>
                             <a href="#">Red emprende nicaragua</a>
@@ -46,7 +46,7 @@
             <div class="columns">
                 <div class="column">
                     <p>Programas</p>
-
+    
                     <ul>
                         <li><a href="#">lorem ipsum</a></li>
                         <li><a href="#">Lorem ipsum dolor sit amet</a></li>
@@ -58,7 +58,7 @@
         <div class="column">
             <div class="box">
                 <h5 class="title is-5">Contactanos</h5>
-
+    
                 <div class="content">
                     <table class="table">
                         <tbody>
@@ -70,7 +70,7 @@
                                 </td>
                                 <td>Leon, Nicaragua. UCC Leon</td>
                             </tr>
-
+    
                             <tr>
                                 <td width="1" class="has-text-centered">
                                     <span class="icon">
@@ -79,7 +79,7 @@
                                 </td>
                                 <td>John Doe</td>
                             </tr>
-
+    
                             <tr>
                                 <td width="1" class="has-text-centered">
                                     <span class="icon">
@@ -88,51 +88,51 @@
                                 </td>
                                 <td>john.doe@domain.edu.ni</td>
                             </tr>
-
+    
                             <tr>
                                 <td width="1" class="has-text-centered">
                                     <span class="icon">
                                         <i class="fa fa-phone" aria-hidden="true"></i>
                                     </span>
                                 </td>
-                                <td>(505) 8888 8878, 7777 7878</td>
+                                <td>(505) <a href="tel:88888878">8888 8878</a>, <a href="tel:77777878">7777 7878</a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-
+    
                 <div class="content">
                     <form method="POST" action="about" autocomplete="off">
                         {{ csrf_field() }}
-
+    
                         <div class="field">
                             <label for="name">Nombre</label>
                             <p class="control">
                                 <input type="text" name="name" id="name" class="input">
                             </p>
                         </div>
-
+    
                         <div class="field">
                             <label for="name">Email</label>
                             <p class="control">
                                 <input type="email" name="email" id="email" class="input">
                             </p>
                         </div>
-
+    
                         <div class="field">
                             <label for="message">Mensaje</label>
                             <p class="control">
                                 <textarea name="message" id="message" class="textarea"></textarea>
                             </p>
                         </div>
-
+    
                         <button type="submit" class="button is-primary">Enviar</button>
-
+    
                         <p class="field">
                             @include('partials.errors')
                         </p>
                     </form>
-
+    
                     @include('partials.message')
                 </div>
             </div>
