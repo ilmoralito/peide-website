@@ -9,7 +9,7 @@
         @include('tags.form')
 
         <div class="field">
-            <button type="submit" class="button is-primary">Agregar</button>
+            <button type="submit" class="button is-primary is-outlined">Agregar</button>
         </div>
 
         @include('partials.errors')
