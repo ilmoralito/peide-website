@@ -126,7 +126,7 @@
                             </p>
                         </div>
     
-                        <button type="submit" class="button is-primary">Enviar</button>
+                        <button type="submit" class="button is-primary is-outlined">Enviar</button>
     
                         <p class="field">
                             @include('partials.errors')

@@ -31,7 +31,7 @@
                             </small>
                         </p>
 
-                        <a href="/posts/{{ $post->slug }}" class="button is-primary is-outlined">
+                        <a href="/posts/{{ $post->slug }}" class="button is-info is-outlined">
                             Saber mas
                         </a>
                     </p>

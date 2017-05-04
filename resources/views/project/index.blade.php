@@ -31,7 +31,7 @@
                 <p class="subtitle">{{ $project->description }}</p>
 
                 <p class="field">
-                    <a href="projects/{{ $project->slug }}" class="button is-info">Saber mas</a>
+                    <a href="projects/{{ $project->slug }}" class="button is-info is-outlined">Saber mas</a>
                 </p>
             </div>
         @endforeach

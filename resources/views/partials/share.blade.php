@@ -1,6 +1,6 @@
 <div class="content">
     <div class="field">
-        <a href="#" id="sharingButton" class="button is-fullwidth is-success" alt="Comparte con los amigos">Comparte</a>
+        <a href="#" id="sharingButton" class="button is-outlined is-fullwidth is-success" alt="Comparte con los amigos">Comparte</a>
     </div>
 
     <div class="modal">

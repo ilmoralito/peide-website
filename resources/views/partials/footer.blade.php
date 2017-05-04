@@ -20,7 +20,7 @@
 
                         <div class="field">
                             <p class="control">
-                                <button type="submit" class="button is-primary">Suscribeme</button>
+                                <button type="submit" class="button is-primary is-outlined">Suscribeme</button>
                             </p>
                         </div>
                     </form>
