@@ -312,7 +312,7 @@
                     @include('partials.faq', [
                         'email' => $event->user->email,
                         'name' => $event->name,
-                        'event' => 'evento'
+                        'type' => 'evento'
                     ])
                 @endif
             </div>
